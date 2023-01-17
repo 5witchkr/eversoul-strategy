@@ -1,0 +1,5 @@
+rootProject.name = 'eversoul'
+include 'infrastructure'
+include 'presentation'
+include 'stage-solution'
+
