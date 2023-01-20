@@ -1,5 +1,6 @@
 rootProject.name = 'eversoul'
 include 'infrastructure'
 include 'presentation'
-include 'stage-solution'
+include 'stage-tactic'
+include 'stage-tactic'
 

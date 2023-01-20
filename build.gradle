@@ -9,7 +9,7 @@ repositories {
 }
 
 subprojects {
-	group 'com.wayfarer'
+	group 'com.strategy'
 	version '0.0.1-SNAPSHOT'
 
 	apply plugin: 'java'
