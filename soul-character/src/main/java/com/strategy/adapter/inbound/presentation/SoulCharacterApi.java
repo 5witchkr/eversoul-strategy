@@ -1,8 +1,8 @@
 package com.strategy.adapter.inbound.presentation;
 
 
-import com.strategy.application.port.inbound.outputdto.TierDto;
-import com.strategy.application.port.inbound.SoulCharacterInboundPort;
+import com.strategy.application.facade.SoulCharacterFacade;
+import com.strategy.application.port.inbound.outputdto.SoulCharacterResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,18 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/soulcharacter")
 public class SoulCharacterApi {
 
-    private final SoulCharacterInboundPort soulCharacterInboundPort;
+    private final SoulCharacterFacade soulCharacterFacade;
 
-    public SoulCharacterApi(SoulCharacterInboundPort soulCharacterInboundPort) {
-        this.soulCharacterInboundPort = soulCharacterInboundPort;
+    public SoulCharacterApi(SoulCharacterFacade soulCharacterFacade) {
+        this.soulCharacterFacade = soulCharacterFacade;
     }
 
+
     @GetMapping("/tier")
-    public ResponseEntity<TierDto> getSoulTier(@RequestParam Long tier) {
-        return new ResponseEntity<>(soulCharacterInboundPort.getTier(tier), HttpStatus.OK);
+    public ResponseEntity<List<SoulCharacterResponseDto>> getSoulByTier(@RequestParam String tier) {
+        return new ResponseEntity<>(soulCharacterFacade.getSoulByTier(tier), HttpStatus.OK);
     }
 }
