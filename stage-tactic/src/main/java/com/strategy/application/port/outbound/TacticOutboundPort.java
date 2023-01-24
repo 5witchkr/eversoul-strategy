@@ -5,4 +5,6 @@ import com.strategy.adpater.outbound.persistence.entity.Tactic;
 public interface TacticOutboundPort {
 
     Tactic save(Tactic tactic);
+
+    void deleteById(Long id);
 }
