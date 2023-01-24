@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("BanSoulValidator Tests")
-public class BanSoulValidatorTests {
+public class BanSoulNameValidatorTests {
     private BanSoulsValidator banSoulsValidator;
 
     @TestFactory
