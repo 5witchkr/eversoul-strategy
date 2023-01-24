@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/stagetactic/admin")
+@RequestMapping("/api/stagetactic-admin")
 public class StageTacticAdminApi {
 
     @Value("${devValue}")
