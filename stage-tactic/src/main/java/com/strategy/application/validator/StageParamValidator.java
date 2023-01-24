@@ -10,17 +10,15 @@ import java.util.stream.IntStream;
 @Component
 public class StageParamValidator {
 
-    public void checkLocation(String location){
-        List<String> useValue = IntStream.rangeClosed(1,15)
-                .mapToObj(String::valueOf)
-                .collect(Collectors.toList());
+    public void checkLocation(int location){
+        List<Integer> useValue = IntStream.rangeClosed(1,15)
+                .boxed().collect(Collectors.toList());
         if (!useValue.contains(location)) throw new IllegalArgumentException("존재하지 않는 스테이지");
     }
 
-    public void checkStep(String step){
-        List<String> useValue = IntStream.rangeClosed(1,45)
-                .mapToObj(String::valueOf)
-                .collect(Collectors.toList());
+    public void checkStep(int step){
+        List<Integer> useValue = IntStream.rangeClosed(1,45)
+                .boxed().collect(Collectors.toList());
         if (!useValue.contains(step)) throw new IllegalArgumentException("존재하지 않는 단계");
     }
 }
