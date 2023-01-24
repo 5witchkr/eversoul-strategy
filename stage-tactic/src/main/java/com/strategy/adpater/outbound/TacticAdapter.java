@@ -19,4 +19,9 @@ public class TacticAdapter implements TacticOutboundPort {
     public Tactic save(Tactic tactic) {
         return tacticRepository.save(tactic);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        tacticRepository.deleteById(id);
+    }
 }
