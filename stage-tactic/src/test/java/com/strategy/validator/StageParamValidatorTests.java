@@ -23,8 +23,8 @@ public class StageParamValidatorTests {
     @DisplayName("checkLocation Success Tests")
     Stream<DynamicTest> checkLocationSuccess() {
         stageParamValidator = new StageParamValidator();
-        final List<String> valueSource = IntStream.rangeClosed(1,15)
-                .mapToObj(String::valueOf)
+        final List<Integer> valueSource = IntStream.rangeClosed(1,15)
+                .boxed()
                 .collect(Collectors.toList());
 
         return valueSource.stream()
@@ -36,12 +36,12 @@ public class StageParamValidatorTests {
     @DisplayName("checkLocation Fail Tests")
     Stream<DynamicTest> checkLocationFail() {
         stageParamValidator = new StageParamValidator();
-        final List<String> source1 = IntStream.rangeClosed(16,30)
-                .mapToObj(String::valueOf)
+        final List<Integer> source1 = IntStream.rangeClosed(16,30)
+                .boxed()
                 .collect(Collectors.toList());
-        final List<String> source2 = List.of("0","ㅁ","$","asdf","0a","111",""," ","-1");
+        final List<Integer> source2 = List.of(0, -1, -10, 500);
 
-        final List<String> valueSource = Stream.of(source1,source2)
+        final List<Integer> valueSource = Stream.of(source1,source2)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
 
@@ -56,8 +56,8 @@ public class StageParamValidatorTests {
     @DisplayName("checkStep Success Tests")
     Stream<DynamicTest> checkStepSuccess() {
         stageParamValidator = new StageParamValidator();
-        final List<String> valueSource = IntStream.rangeClosed(1,45)
-                .mapToObj(String::valueOf)
+        final List<Integer> valueSource = IntStream.rangeClosed(1,45)
+                .boxed()
                 .collect(Collectors.toList());
 
         return valueSource.stream()
@@ -69,12 +69,12 @@ public class StageParamValidatorTests {
     @DisplayName("checkStep Fail Tests")
     Stream<DynamicTest> checkStepFail() {
         stageParamValidator = new StageParamValidator();
-        final List<String> source1 = IntStream.rangeClosed(51,60)
-                .mapToObj(String::valueOf)
+        final List<Integer> source1 = IntStream.rangeClosed(51,60)
+                .boxed()
                 .collect(Collectors.toList());
-        final List<String> source2 = List.of("0","ㅁ","$","asdf","0a","111",""," ","-1");
+        final List<Integer> source2 = List.of(0, 500, -1, -10);
 
-        final List<String> valueSource = Stream.of(source1,source2)
+        final List<Integer> valueSource = Stream.of(source1,source2)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
 
