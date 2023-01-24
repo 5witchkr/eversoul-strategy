@@ -10,11 +10,11 @@ import com.strategy.application.port.outbound.SoulManagementOutboundPort;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SoulManagementProcessor implements SaveSoulInboundPort, PutSoulInboundPort, DeleteSoulInboundPort {
+public class SoulTierManagementProcessor implements SaveSoulInboundPort, PutSoulInboundPort, DeleteSoulInboundPort {
 
     private final SoulManagementOutboundPort soulManagementOutboundPort;
 
-    public SoulManagementProcessor(SoulManagementOutboundPort soulManagementOutboundPort) {
+    public SoulTierManagementProcessor(SoulManagementOutboundPort soulManagementOutboundPort) {
         this.soulManagementOutboundPort = soulManagementOutboundPort;
     }
 
