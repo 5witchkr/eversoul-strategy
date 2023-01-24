@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class RecommendTacticResponseDto {
     private String position;
-    private String power;
+    private int power;
 
     private String info;
     private List<SoulCharacterTacticResponseDto> soulCharacterTacticResponseDtos;
@@ -18,7 +18,7 @@ public class RecommendTacticResponseDto {
     public RecommendTacticResponseDto() {}
 
     @Builder
-    public RecommendTacticResponseDto(String position, String power,String info, List<SoulCharacterTacticResponseDto> soulCharacterTacticResponseDtos) {
+    public RecommendTacticResponseDto(String position, int power,String info, List<SoulCharacterTacticResponseDto> soulCharacterTacticResponseDtos) {
         this.position = position;
         this.power = power;
         this.info = info;
