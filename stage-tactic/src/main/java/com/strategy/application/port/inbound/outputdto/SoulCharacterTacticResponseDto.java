@@ -8,12 +8,12 @@ import lombok.Setter;
 @Setter
 public class SoulCharacterTacticResponseDto {
     private String name;
-    private String level;
+    private int level;
 
     public SoulCharacterTacticResponseDto() {}
 
     @Builder
-    public SoulCharacterTacticResponseDto(String name, String level) {
+    public SoulCharacterTacticResponseDto(String name, int level) {
         this.name = name;
         this.level = level;
     }
