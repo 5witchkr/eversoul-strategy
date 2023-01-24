@@ -36,8 +36,6 @@ public class SoulCharacterAdminApi {
     @PostMapping("/soul")
     public void postSoul(@RequestParam String devValue,
                          @RequestBody SoulSaveRequestDto soulSaveRequestDto){
-        System.out.println(value);
-        System.out.println(devValue);
         if (!devValue.equals(value)) return;
         soulManagementFacade.saveSoul(soulSaveRequestDto);
     }
