@@ -20,7 +20,7 @@ public class Tactic {
     private String position;
 
     @Column
-    private String power;
+    private int power;
 
     @Column
     private String info;
@@ -33,7 +33,7 @@ public class Tactic {
     private List<TacticCharacter> tacticCharacters = new ArrayList<>();
 
     @Builder
-    public Tactic(String position, String power, String info, Stage stage, List<TacticCharacter> tacticCharacters) {
+    public Tactic(String position, int power, String info, Stage stage, List<TacticCharacter> tacticCharacters) {
         this.position = position;
         this.power = power;
         this.info = info;
