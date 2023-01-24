@@ -25,6 +25,6 @@ public class SoulCharacterApi {
 
     @GetMapping("/tier")
     public ResponseEntity<List<SoulCharacterResponseDto>> getSoulByTier(@RequestParam String tier) {
-        return new ResponseEntity<>(soulCharacterFacade.getSoulByTier(tier), HttpStatus.OK);
+        return ResponseEntity.ok(soulCharacterFacade.getSoulByTier(tier));
     }
 }
