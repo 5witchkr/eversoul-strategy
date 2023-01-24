@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface GetRecommendInboundProt {
 
-    List<RecommendTacticResponseDto> getRecommendWithoutBans(String location, String step, List<String> bans);
+    List<RecommendTacticResponseDto> getRecommendWithoutBans(int location, int step, List<String> bans);
 }
