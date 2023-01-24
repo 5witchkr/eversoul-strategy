@@ -33,8 +33,8 @@ public class StageTacticFacade {
     public List<RecommendTacticResponseDto> getRecommendWithoutBans(String location, String step, List<String> bans) {
         stageParamValidator.checkLocation(location);
         stageParamValidator.checkStep(step);
-        banSoulsValidator.checkBanSouls(bans);
-        return recommendProcessor.getRecommendWithoutBans(location ,step ,bans);
+        List<String> filteredBans = banSoulsValidator.filterBanSouls(bans);
+        return recommendProcessor.getRecommendWithoutBans(location ,step ,filteredBans);
     }
 
     public void postTactic(TacticRequestDto tacticRequestDto){
