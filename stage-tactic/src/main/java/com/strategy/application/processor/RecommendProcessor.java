@@ -22,18 +22,16 @@ public class RecommendProcessor implements GetRecommendInboundProt {
         this.stageOutboundPort = stageOutboundPort;
     }
 
+    private static final CheckBans<List<SoulCharacterTacticResponseDto>, List<String>> checkBans =
+            (dto, ban) -> dto.stream().anyMatch(target -> ban.contains(target.getName()));
+
     @Override
-    public List<RecommendTacticResponseDto> getRecommendWithoutBans(String location, String step, List<String> bans) {
+    public List<RecommendTacticResponseDto> getRecommendWithoutBans(int location, int step, List<String> bans) {
         return Objects.requireNonNull(stageOutboundPort.getByLocationAndStep(location, step).orElse(null))
                 .getTactics().stream()
                 .map(this::tacticToRecommendTacticResponseDto)
-                .filter(value -> !checkBans(value.getSoulCharacterTacticResponseDtos(), bans))
+                .filter(value -> !checkBans.check(value.getSoulCharacterTacticResponseDtos(),bans))
                 .collect(Collectors.toList());
-
-    }
-
-    private boolean checkBans(List<SoulCharacterTacticResponseDto> soulCharacterTacticResponseDtos, List<String> bans) {
-        return soulCharacterTacticResponseDtos.stream().anyMatch(value -> bans.contains(value.getName()));
     }
 
     private RecommendTacticResponseDto tacticToRecommendTacticResponseDto(Tactic tactic){
