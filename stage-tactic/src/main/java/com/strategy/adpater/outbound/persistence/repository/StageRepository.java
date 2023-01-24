@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface StageRepository extends JpaRepository<Stage, Long> {
-    Optional<Stage> getByLocationAndStep(String location, String step);
+    Optional<Stage> getByLocationAndStep(int location, int step);
 }

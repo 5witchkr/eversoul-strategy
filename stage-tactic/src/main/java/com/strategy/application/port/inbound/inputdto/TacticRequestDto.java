@@ -9,10 +9,10 @@ import java.util.List;
 @Getter
 @Setter
 public class TacticRequestDto {
-    private String location;
-    private String step;
+    private int location;
+    private int step;
     private String position;
-    private String power;
+    private int power;
     private String info;
     private List<SoulCharacterTacticRequestDto> soulCharacters;
 

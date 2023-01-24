@@ -16,7 +16,7 @@ public class TacticCharacter {
     private Long id;
 
     @Column
-    private String level;
+    private int level;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tactic_id", referencedColumnName = "id")
@@ -27,7 +27,7 @@ public class TacticCharacter {
     private TacticSoulcharacter tacticSoulcharacter;
 
     @Builder
-    public TacticCharacter(String level, Tactic tactic, TacticSoulcharacter tacticSoulcharacter) {
+    public TacticCharacter(int level, Tactic tactic, TacticSoulcharacter tacticSoulcharacter) {
         this.level = level;
         this.tactic = tactic;
         this.tacticSoulcharacter = tacticSoulcharacter;

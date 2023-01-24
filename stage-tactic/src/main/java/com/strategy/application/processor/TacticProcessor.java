@@ -55,7 +55,7 @@ public class TacticProcessor implements PostTacticInboundPort {
                 .orElseThrow(() -> new RuntimeException("유효하지 않은 정령"));
     }
 
-    private Stage getByLocationAndStep(String location, String step) {
+    private Stage getByLocationAndStep(int location, int step) {
         return stageOutboundPort.getByLocationAndStep(location, step)
                 .orElseThrow(() -> new RuntimeException("유효하지 않은 스테이지"));
     }

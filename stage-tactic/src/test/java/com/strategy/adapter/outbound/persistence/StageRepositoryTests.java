@@ -25,13 +25,13 @@ public class StageRepositoryTests {
     @DisplayName("getByLocationAndStep Tests")
     Stream<DynamicTest> getByLocationAndStep() {
         final Stage stage1 = Stage.builder()
-                .location("10").step("10").position("기본").power("111").soulCharacters("메피,나이아")
+                .location(10).step(10).position("기본").power(111).soulCharacters("메피,나이아")
                 .build();
         final Stage stage2 = Stage.builder()
-                .location("11").step("20").position("저격").power("222").soulCharacters("나이아,순이")
+                .location(11).step(20).position("저격").power(222).soulCharacters("나이아,순이")
                 .build();
         final Stage stage3 = Stage.builder()
-                .location("13").step("15").position("수비").power("333").soulCharacters("아드리안,프림")
+                .location(13).step(15).position("수비").power(333).soulCharacters("아드리안,프림")
                 .build();
         stageRepository.save(stage1);
         stageRepository.save(stage2);
@@ -39,8 +39,8 @@ public class StageRepositoryTests {
 
         return Stream.of(
                 DynamicTest.dynamicTest("성공케이스: 해당 스테이지 정보를 가져온다.", () -> {
-                    String location = "11";
-                    String step = "20";
+                    int location = 11;
+                    int step = 20;
 
                     Optional<Stage> result = stageRepository.getByLocationAndStep(location, step);
 

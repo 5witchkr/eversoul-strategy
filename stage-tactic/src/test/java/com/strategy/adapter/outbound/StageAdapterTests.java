@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -34,13 +35,13 @@ public class StageAdapterTests {
         @DisplayName("success case")
         public void successTest() {
             Stage stage = Stage.builder().build();
-            given(stageRepository.getByLocationAndStep(anyString(), anyString()))
+            given(stageRepository.getByLocationAndStep(anyInt(), anyInt()))
                     .willReturn(Optional.of(stage));
 
-            stageAdapter.getByLocationAndStep("10","20");
+            stageAdapter.getByLocationAndStep(10,20);
 
             then(stageRepository).should(times(1))
-                    .getByLocationAndStep(anyString(), anyString());
+                    .getByLocationAndStep(anyInt(), anyInt());
         }
     }
 }

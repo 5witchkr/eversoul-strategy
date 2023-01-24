@@ -18,7 +18,7 @@ public class StageAdapter implements StageOutboundPort {
     }
 
     @Override
-    public Optional<Stage> getByLocationAndStep(String location, String step) {
+    public Optional<Stage> getByLocationAndStep(int location, int step) {
         return stageRepository.getByLocationAndStep(location, step);
     }
 }

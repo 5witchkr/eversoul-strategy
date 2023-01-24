@@ -21,8 +21,8 @@ public class StageTacticApi {
     }
 
     @GetMapping("/{location}/{step}")
-    public ResponseEntity<List<RecommendTacticResponseDto>> recommendTactic(@PathVariable String location,
-                                                                            @PathVariable String step,
+    public ResponseEntity<List<RecommendTacticResponseDto>> recommendTactic(@PathVariable int location,
+                                                                            @PathVariable int step,
                                                                             @RequestParam List<String> bans) {
         return ResponseEntity.ok().body(stageTacticFacade.getRecommendWithoutBans(location, step, bans));
     }
