@@ -16,16 +16,16 @@ public class Stage {
     private Long id;
 
     @Column
-    private String location;
+    private int location;
 
     @Column
-    private String step;
+    private int step;
 
     @Column
     private String position;
 
     @Column
-    private String power;
+    private int power;
 
     @Column
     private String soulCharacters;
@@ -34,7 +34,7 @@ public class Stage {
     private List<Tactic> tactics = new ArrayList<>();
 
     @Builder
-    public Stage(String location, String step, String position, String power, String soulCharacters, List<Tactic> tactics) {
+    public Stage(int location, int step, String position, int power, String soulCharacters, List<Tactic> tactics) {
         this.location = location;
         this.step = step;
         this.position = position;
