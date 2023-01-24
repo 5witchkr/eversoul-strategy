@@ -21,4 +21,19 @@ public class TacticSoulcharacterAdapter implements TacticSoulcharacterOutboundPo
     public Optional<TacticSoulcharacter> getByName(String name) {
         return tacticSoulcharacterRepository.getByName(name);
     }
+
+    @Override
+    public void save(TacticSoulcharacter tacticSoulcharacter) {
+        tacticSoulcharacterRepository.save(tacticSoulcharacter);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        tacticSoulcharacterRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<TacticSoulcharacter> findById(Long id) {
+        return tacticSoulcharacterRepository.findById(id);
+    }
 }
