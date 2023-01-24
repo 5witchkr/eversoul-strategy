@@ -30,25 +30,25 @@ public class RecommendProcessorTests {
         stageOutboundPort = new TestStageOutboundPort();
         recommendProcessor = new RecommendProcessor(stageOutboundPort);
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto1 = SoulCharacterTacticResponseDto.builder()
-                .name("메피").level("111").build();
+                .name("메피").level(111).build();
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto2 = SoulCharacterTacticResponseDto.builder()
-                .name("지호").level("112").build();
+                .name("지호").level(112).build();
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto3 = SoulCharacterTacticResponseDto.builder()
-                .name("아드리안").level("113").build();
+                .name("아드리안").level(113).build();
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto4 = SoulCharacterTacticResponseDto.builder()
-                .name("미리암").level("114").build();
+                .name("미리암").level(114).build();
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto5 = SoulCharacterTacticResponseDto.builder()
-                .name("클로이").level("115").build();
+                .name("클로이").level(115).build();
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto6 = SoulCharacterTacticResponseDto.builder()
-                .name("나이아").level("116").build();
+                .name("나이아").level(116).build();
         final RecommendTacticResponseDto recommendTacticResponseDto1 = RecommendTacticResponseDto.builder()
-                .position("기본").power("123").info("정보1")
+                .position("기본").power(123).info("정보1")
                 .soulCharacterTacticResponseDtos(List.of(
                         soulCharacterTacticResponseDto1,
                         soulCharacterTacticResponseDto2,
                         soulCharacterTacticResponseDto3)).build();
         final RecommendTacticResponseDto recommendTacticResponseDto2 = RecommendTacticResponseDto.builder()
-                .position("수비").power("234").info("정보2")
+                .position("수비").power(234).info("정보2")
                 .soulCharacterTacticResponseDtos(List.of(
                         soulCharacterTacticResponseDto4,
                         soulCharacterTacticResponseDto5,
@@ -57,8 +57,8 @@ public class RecommendProcessorTests {
 
         return Stream.of(
                 DynamicTest.dynamicTest("성공케이스: 해당스테이지 추천픽을 2개 리턴한다.", () -> {
-                    final String location = "11";
-                    final String step = "30";
+                    final int location = 11;
+                    final int step = 30;
                     final List<String> bans = List.of("플랑","아야메");
 
                     List<RecommendTacticResponseDto> result =
@@ -69,8 +69,8 @@ public class RecommendProcessorTests {
                     assertThat(result).usingRecursiveFieldByFieldElementComparator().contains(recommendTacticResponseDto1, recommendTacticResponseDto2);
                 }),
                 DynamicTest.dynamicTest("성공케이스: 해당스테이지 추천픽을 하나 필터링하고 1개만 리턴한다.", () -> {
-                    final String location = "11";
-                    final String step = "30";
+                    final int location = 11;
+                    final int step = 30;
                     final List<String> bans = List.of("아드리안","아야메");
 
                     List<RecommendTacticResponseDto> result =
@@ -81,8 +81,8 @@ public class RecommendProcessorTests {
                     assertThat(result).usingRecursiveFieldByFieldElementComparator().contains(recommendTacticResponseDto2);
                 }),
                 DynamicTest.dynamicTest("성공케이스: 해당스테이지 추천픽을 모두 필터링하고 0개 리턴한다.", () -> {
-                    final String location = "11";
-                    final String step = "30";
+                    final int location = 11;
+                    final int step = 30;
                     final List<String> bans = List.of("아드리안","아야메","메피","지호","미리암","나이아");
 
                     List<RecommendTacticResponseDto> result =
@@ -101,18 +101,18 @@ public class RecommendProcessorTests {
         final TacticSoulcharacter tacticSoulcharacter4 = TacticSoulcharacter.builder().name("미리암").build();
         final TacticSoulcharacter tacticSoulcharacter5 = TacticSoulcharacter.builder().name("클로이").build();
         final TacticSoulcharacter tacticSoulcharacter6 = TacticSoulcharacter.builder().name("나이아").build();
-        final TacticCharacter tacticCharacter1 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter1).level("111").build();
-        final TacticCharacter tacticCharacter2 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter2).level("112").build();
-        final TacticCharacter tacticCharacter3 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter3).level("113").build();
-        final TacticCharacter tacticCharacter4 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter4).level("114").build();
-        final TacticCharacter tacticCharacter5 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter5).level("115").build();
-        final TacticCharacter tacticCharacter6 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter6).level("116").build();
-        final Tactic tactic1 = Tactic.builder().power("123").info("정보1").position("기본").tacticCharacters(List.of(tacticCharacter1,tacticCharacter2,tacticCharacter3)).build();
-        final Tactic tactic2 = Tactic.builder().power("234").info("정보2").position("수비").tacticCharacters(List.of(tacticCharacter4,tacticCharacter5,tacticCharacter6)).build();
+        final TacticCharacter tacticCharacter1 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter1).level(111).build();
+        final TacticCharacter tacticCharacter2 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter2).level(112).build();
+        final TacticCharacter tacticCharacter3 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter3).level(113).build();
+        final TacticCharacter tacticCharacter4 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter4).level(114).build();
+        final TacticCharacter tacticCharacter5 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter5).level(115).build();
+        final TacticCharacter tacticCharacter6 = TacticCharacter.builder().tacticSoulcharacter(tacticSoulcharacter6).level(116).build();
+        final Tactic tactic1 = Tactic.builder().power(123).info("정보1").position("기본").tacticCharacters(List.of(tacticCharacter1,tacticCharacter2,tacticCharacter3)).build();
+        final Tactic tactic2 = Tactic.builder().power(234).info("정보2").position("수비").tacticCharacters(List.of(tacticCharacter4,tacticCharacter5,tacticCharacter6)).build();
         final Stage stage = Stage.builder()
-                .position("기본").power("10000").location("11").step("30").tactics(List.of(tactic1, tactic2)).build();
+                .position("기본").power(10000).location(11).step(30).tactics(List.of(tactic1, tactic2)).build();
         @Override
-        public Optional<Stage> getByLocationAndStep(String location, String step) {
+        public Optional<Stage> getByLocationAndStep(int location, int step) {
             return Optional.of(stage);
         }
     }
