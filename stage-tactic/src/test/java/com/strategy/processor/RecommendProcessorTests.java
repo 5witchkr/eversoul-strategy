@@ -115,5 +115,20 @@ public class RecommendProcessorTests {
         public Optional<Stage> getByLocationAndStep(int location, int step) {
             return Optional.of(stage);
         }
+
+        @Override
+        public void deleteById(Long id) {
+
+        }
+
+        @Override
+        public void save(Stage stage) {
+
+        }
+
+        @Override
+        public Optional<Stage> findById(Long id) {
+            return Optional.empty();
+        }
     }
 }

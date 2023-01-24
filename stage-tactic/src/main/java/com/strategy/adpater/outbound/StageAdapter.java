@@ -21,4 +21,19 @@ public class StageAdapter implements StageOutboundPort {
     public Optional<Stage> getByLocationAndStep(int location, int step) {
         return stageRepository.getByLocationAndStep(location, step);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        stageRepository.deleteById(id);
+    }
+
+    @Override
+    public void save(Stage stage) {
+        stageRepository.save(stage);
+    }
+
+    @Override
+    public Optional<Stage> findById(Long id) {
+        return stageRepository.findById(id);
+    }
 }
