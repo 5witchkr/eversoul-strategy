@@ -5,6 +5,7 @@ import com.strategy.application.facade.StageTacticFacade;
 import com.strategy.application.port.inbound.inputdto.TacticRequestDto;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -29,7 +30,7 @@ public class StageTacticApi {
 
 
     @PostMapping("/tactic")
-    public ResponseEntity<Void> postTactic(@RequestBody TacticRequestDto tacticRequestDto) {
+    public ResponseEntity<Void> postTactic(@Validated @RequestBody TacticRequestDto tacticRequestDto) {
         stageTacticFacade.postTactic(tacticRequestDto);
         return ResponseEntity.created(
                 URI.create("/api/stagetactic/" + tacticRequestDto.getLocation() + "/" + tacticRequestDto.getStep()))
