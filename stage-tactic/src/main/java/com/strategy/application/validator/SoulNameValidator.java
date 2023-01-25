@@ -24,4 +24,13 @@ public class SoulNameValidator {
     public void checkSoulNameByDtos(List<SoulCharacterTacticRequestDto> soulCharacters) {
         soulCharacters.forEach(dto -> checkSoulName(dto.getName()));
     }
+
+    public void checkDuplicateSoul(List<SoulCharacterTacticRequestDto> soulCharacters){
+        if (soulCharacters.stream()
+                .map(SoulCharacterTacticRequestDto::getName)
+                .distinct()
+                .count() != soulCharacters.size()){
+            throw new RuntimeException("중복된 정령정보 입력");
+        }
+    }
 }
