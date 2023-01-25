@@ -60,6 +60,7 @@ public class RecommendProcessor implements GetRecommendInboundProt {
         }
         SoulCharacterTacticResponseDto.SoulCharacterTacticResponseDtoBuilder
                 soulCharacterTacticResponseDto = SoulCharacterTacticResponseDto.builder();
+        soulCharacterTacticResponseDto.id(tacticCharacter.getTacticSoulcharacter().getId());
         soulCharacterTacticResponseDto.name(tacticCharacter.getTacticSoulcharacter().getName());
         soulCharacterTacticResponseDto.level(tacticCharacter.getLevel());
         return soulCharacterTacticResponseDto.build();

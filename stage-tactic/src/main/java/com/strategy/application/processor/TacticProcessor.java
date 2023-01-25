@@ -13,6 +13,7 @@ import com.strategy.application.port.outbound.TacticOutboundPort;
 import com.strategy.application.port.outbound.TacticSoulcharacterOutboundPort;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
@@ -31,6 +32,7 @@ public class TacticProcessor implements PostTacticInboundPort {
     }
 
     @Override
+    @Transactional
     public void postTactic(TacticRequestDto tacticRequestDto) {
         Tactic tactic = tacticOutboundPort.save(Tactic.builder()
                 .stage(getByLocationAndStep(tacticRequestDto.getLocation(), tacticRequestDto.getStep()))
