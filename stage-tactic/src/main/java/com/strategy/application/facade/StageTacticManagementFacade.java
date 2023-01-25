@@ -5,6 +5,7 @@ import com.strategy.application.port.inbound.inputdto.*;
 import com.strategy.application.processor.SoulManagementProcessor;
 import com.strategy.application.processor.StageManagementProcessor;
 import com.strategy.application.processor.TacticManagementProcessor;
+import com.strategy.application.validator.SoulNameValidator;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,15 +14,18 @@ public class StageTacticManagementFacade {
     private final SoulManagementProcessor soulManagementProcessor;
     private final TacticManagementProcessor tacticManagementProcessor;
     private final StageManagementProcessor stageManagementProcessor;
+    private final SoulNameValidator soulNameValidator;
 
-    public StageTacticManagementFacade(SoulManagementProcessor soulManagementProcessor, TacticManagementProcessor tacticManagementProcessor, StageManagementProcessor stageManagementProcessor) {
+    public StageTacticManagementFacade(SoulManagementProcessor soulManagementProcessor, TacticManagementProcessor tacticManagementProcessor, StageManagementProcessor stageManagementProcessor, SoulNameValidator soulNameValidator) {
         this.soulManagementProcessor = soulManagementProcessor;
         this.tacticManagementProcessor = tacticManagementProcessor;
         this.stageManagementProcessor = stageManagementProcessor;
+        this.soulNameValidator = soulNameValidator;
     }
 
 
     public void saveSoul(SoulSaveDto soulSaveDto) {
+        soulNameValidator.checkSoulName(soulSaveDto.getName());
         soulManagementProcessor.saveSoul(soulSaveDto);
     }
 
@@ -50,6 +54,7 @@ public class StageTacticManagementFacade {
     }
 
     public void putSoul(SoulPutDto soulPutDto) {
+        soulNameValidator.checkSoulName(soulPutDto.getName());
         soulManagementProcessor.putSoul(soulPutDto);
     }
 }
