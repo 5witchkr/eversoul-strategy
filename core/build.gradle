@@ -2,6 +2,8 @@ jar { enabled = false }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
     implementation project(':stage-tactic')
     implementation project(':story-answer')
     implementation project(':soul-character')
