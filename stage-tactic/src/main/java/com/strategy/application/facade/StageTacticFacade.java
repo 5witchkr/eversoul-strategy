@@ -52,6 +52,7 @@ public class StageTacticFacade {
         powerValidator.checkPower(tacticRequestDto.getPower());
         levelValidator.checkLevelByDtos(tacticRequestDto.getSoulCharacters());
         soulNameValidator.checkSoulNameByDtos(tacticRequestDto.getSoulCharacters());
+        soulNameValidator.checkDuplicateSoul(tacticRequestDto.getSoulCharacters());
         tacticProcessor.postTactic(tacticRequestDto);
     }
 }
