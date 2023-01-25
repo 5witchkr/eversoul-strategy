@@ -34,7 +34,7 @@ public class TacticRequestDto {
     private String info;
 
     @NotEmpty
-    @Size(min = 1, max = 5)
+    @Size(min = 5, max = 5)
     private List<SoulCharacterTacticRequestDto> soulCharacters;
 
     public TacticRequestDto() {}
