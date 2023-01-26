@@ -130,5 +130,10 @@ public class RecommendProcessorTests {
         public Optional<Stage> findById(Long id) {
             return Optional.empty();
         }
+
+        @Override
+        public boolean existsByLocationAndStep(int location, int step) {
+            return false;
+        }
     }
 }
