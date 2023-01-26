@@ -40,6 +40,7 @@ public class RecommendProcessor implements GetRecommendInboundProt {
         }
         RecommendTacticResponseDto.RecommendTacticResponseDtoBuilder
                 recommendTacticResponseDto = RecommendTacticResponseDto.builder();
+        recommendTacticResponseDto.tacticId(tactic.getId());
         recommendTacticResponseDto.position(tactic.getPosition());
         recommendTacticResponseDto.power(tactic.getPower());
         recommendTacticResponseDto.info(tactic.getInfo());
