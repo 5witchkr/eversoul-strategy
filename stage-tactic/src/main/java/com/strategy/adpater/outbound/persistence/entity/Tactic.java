@@ -23,7 +23,7 @@ public class Tactic {
     private int power;
 
     @Column
-    private String info;
+    private String info = "";
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stage_id", referencedColumnName = "id")
