@@ -12,4 +12,6 @@ public interface TacticSoulcharacterOutboundPort {
     void deleteById(Long id);
 
     Optional<TacticSoulcharacter> findById(Long id);
+
+    boolean existsByName(String name);
 }

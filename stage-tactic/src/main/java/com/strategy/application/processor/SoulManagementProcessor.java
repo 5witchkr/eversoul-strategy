@@ -25,6 +25,7 @@ public class SoulManagementProcessor implements SaveSoulInboundPort, PutSoulInbo
 
     @Override
     public void putSoul(SoulPutDto soulPutDto) {
+        checkExistsSoulByName(soulPutDto.getName());
         TacticSoulcharacter tacticSoulcharacter = tacticSoulcharacterOutboundPort.findById(soulPutDto.getId())
                 .orElseThrow(() -> new NullPointerException("유효하지 보은 정보"));
         tacticSoulcharacter.setName(soulPutDto.getName());
@@ -35,11 +36,18 @@ public class SoulManagementProcessor implements SaveSoulInboundPort, PutSoulInbo
 
     @Override
     public void saveSoul(SoulSaveDto soulSaveDto) {
+        checkExistsSoulByName(soulSaveDto.getName());
         TacticSoulcharacter tacticSoulcharacter = TacticSoulcharacter.builder()
                 .type(soulSaveDto.getType())
                 .tier(soulSaveDto.getTier())
                 .name(soulSaveDto.getName())
                 .build();
         tacticSoulcharacterOutboundPort.save(tacticSoulcharacter);
+    }
+
+    private void checkExistsSoulByName(String soulName) {
+        if (tacticSoulcharacterOutboundPort.existsByName(soulName)){
+            throw new RuntimeException("이미 존재하는 정령 이름");
+        };
     }
 }

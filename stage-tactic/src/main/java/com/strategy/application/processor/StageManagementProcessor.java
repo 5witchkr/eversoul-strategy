@@ -26,6 +26,7 @@ public class StageManagementProcessor implements SaveStageInboundPort, PutStageI
 
     @Override
     public void putStage(StagePutDto stagePutDto) {
+        checkExistsStage(stagePutDto.getLocation(), stagePutDto.getStep());
         Stage stage = stageOutboundPort.findById(stagePutDto.getId())
                 .orElseThrow(() -> new NullPointerException("유효하지 않은 정보"));
         stage.setLocation(stagePutDto.getLocation());
@@ -38,6 +39,7 @@ public class StageManagementProcessor implements SaveStageInboundPort, PutStageI
 
     @Override
     public void saveStage(StageSaveDto stageSaveDto) {
+        checkExistsStage(stageSaveDto.getLocation(), stageSaveDto.getStep());
         Stage stage = Stage.builder()
                 .location(stageSaveDto.getLocation())
                 .step(stageSaveDto.getStep())
@@ -46,5 +48,11 @@ public class StageManagementProcessor implements SaveStageInboundPort, PutStageI
                 .soulCharacters(String.join(",",stageSaveDto.getSoulCharacters()))
                 .build();
         stageOutboundPort.save(stage);
+    }
+
+    private void checkExistsStage(int location, int step) {
+        if (stageOutboundPort.existsByLocationAndStep(location, step)){
+            throw new RuntimeException("이미 존재하는 스테이지");
+        };
     }
 }

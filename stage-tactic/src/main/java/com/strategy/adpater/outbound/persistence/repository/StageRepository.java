@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface StageRepository extends JpaRepository<Stage, Long> {
     Optional<Stage> getByLocationAndStep(int location, int step);
+
+    boolean existsByLocationAndStep(int location, int step);
 }

@@ -36,4 +36,9 @@ public class StageAdapter implements StageOutboundPort {
     public Optional<Stage> findById(Long id) {
         return stageRepository.findById(id);
     }
+
+    @Override
+    public boolean existsByLocationAndStep(int location, int step) {
+        return stageRepository.existsByLocationAndStep(location, step);
+    }
 }

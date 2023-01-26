@@ -32,6 +32,15 @@ public class Tactic {
     @OneToMany(mappedBy = "tactic", cascade = CascadeType.ALL)
     private List<TacticCharacter> tacticCharacters = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "tactic", cascade = CascadeType.ALL)
+    private List<TacticComment> tacticComments = new ArrayList<>();
+
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "tacticRecommend_id", referencedColumnName = "id")
+    private TacticRecommend tacticRecommend = new TacticRecommend();
+
     @Builder
     public Tactic(String position, int power, String info, Stage stage, List<TacticCharacter> tacticCharacters) {
         this.position = position;

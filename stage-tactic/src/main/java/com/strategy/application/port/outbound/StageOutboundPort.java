@@ -12,4 +12,6 @@ public interface StageOutboundPort {
     void save(Stage stage);
 
     Optional<Stage> findById(Long id);
+
+    boolean existsByLocationAndStep(int location, int step);
 }
