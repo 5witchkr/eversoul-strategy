@@ -36,4 +36,11 @@ public class TacticSoulcharacterAdapter implements TacticSoulcharacterOutboundPo
     public Optional<TacticSoulcharacter> findById(Long id) {
         return tacticSoulcharacterRepository.findById(id);
     }
+
+    @Override
+    public boolean existsByName(String name) {
+        return tacticSoulcharacterRepository.existsByName(name);
+    }
+
+
 }
