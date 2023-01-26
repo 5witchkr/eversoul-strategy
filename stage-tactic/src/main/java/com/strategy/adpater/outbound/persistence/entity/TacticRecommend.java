@@ -1,10 +1,7 @@
 package com.strategy.adpater.outbound.persistence.entity;
 
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -18,9 +15,8 @@ public class TacticRecommend {
     private Long id;
 
     @Column
-    private int score;
+    private int score = 0;
 
     @OneToOne(mappedBy = "tacticRecommend")
     private Tactic tactic;
-
 }
