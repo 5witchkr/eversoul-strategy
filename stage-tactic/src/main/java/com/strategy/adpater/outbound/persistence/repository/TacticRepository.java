@@ -4,4 +4,5 @@ import com.strategy.adpater.outbound.persistence.entity.Tactic;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TacticRepository extends JpaRepository<Tactic, Long> {
+    Tactic getById(Long tacticId);
 }
