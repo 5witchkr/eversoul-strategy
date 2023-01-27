@@ -1,10 +1,10 @@
 package com.strategy.application.facade;
 
 
+import com.strategy.application.port.inbound.GetRecommendInboundProt;
+import com.strategy.application.port.inbound.PostTacticInboundPort;
 import com.strategy.application.port.inbound.inputdto.TacticRequestDto;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
-import com.strategy.application.processor.RecommendProcessor;
-import com.strategy.application.processor.TacticProcessor;
 import com.strategy.application.validator.*;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 public class StageTacticFacade {
 
-    private final RecommendProcessor recommendProcessor;
-    private final TacticProcessor tacticProcessor;
+    private final GetRecommendInboundProt getRecommendInboundProt;
+    private final PostTacticInboundPort postTacticInboundPort;
     private final BanSoulsValidator banSoulsValidator;
     private final StageParamValidator stageParamValidator;
     private final InfoValidator infoValidator;
@@ -25,9 +25,17 @@ public class StageTacticFacade {
 
 
 
-    public StageTacticFacade(RecommendProcessor recommendProcessor, TacticProcessor tacticProcessor, BanSoulsValidator banSoulsValidator, StageParamValidator stageParamValidator, InfoValidator infoValidator, LevelValidator levelValidator, PositionValidator positionValidator, PowerValidator powerValidator, SoulNameValidator soulNameValidator) {
-        this.recommendProcessor = recommendProcessor;
-        this.tacticProcessor = tacticProcessor;
+    public StageTacticFacade(GetRecommendInboundProt getRecommendInboundProt,
+                             PostTacticInboundPort postTacticInboundPort,
+                             BanSoulsValidator banSoulsValidator,
+                             StageParamValidator stageParamValidator,
+                             InfoValidator infoValidator,
+                             LevelValidator levelValidator,
+                             PositionValidator positionValidator,
+                             PowerValidator powerValidator,
+                             SoulNameValidator soulNameValidator) {
+        this.getRecommendInboundProt = getRecommendInboundProt;
+        this.postTacticInboundPort = postTacticInboundPort;
         this.banSoulsValidator = banSoulsValidator;
         this.stageParamValidator = stageParamValidator;
         this.infoValidator = infoValidator;
@@ -41,7 +49,7 @@ public class StageTacticFacade {
         stageParamValidator.checkLocation(location);
         stageParamValidator.checkStep(step);
         List<String> filteredBans = banSoulsValidator.filterBanSouls(bans);
-        return recommendProcessor.getRecommendWithoutBans(location ,step ,filteredBans);
+        return getRecommendInboundProt.getRecommendWithoutBans(location ,step ,filteredBans);
     }
 
     public void postTactic(TacticRequestDto tacticRequestDto){
@@ -53,6 +61,6 @@ public class StageTacticFacade {
         levelValidator.checkLevelByDtos(tacticRequestDto.getSoulCharacters());
         soulNameValidator.checkSoulNameByDtos(tacticRequestDto.getSoulCharacters());
         soulNameValidator.checkDuplicateSoul(tacticRequestDto.getSoulCharacters());
-        tacticProcessor.postTactic(tacticRequestDto);
+        postTacticInboundPort.postTactic(tacticRequestDto);
     }
 }
