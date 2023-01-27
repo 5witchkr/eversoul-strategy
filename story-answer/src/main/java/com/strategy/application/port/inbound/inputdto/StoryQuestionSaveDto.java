@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 public class StoryQuestionSaveDto {
 
+    private Long storyEpisodeId;
+
     private int orderNumber;
 
     private String info;
-
-    private Long StoryEpisodeId;
 }
