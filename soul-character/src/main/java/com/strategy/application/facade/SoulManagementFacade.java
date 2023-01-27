@@ -1,29 +1,35 @@
 package com.strategy.application.facade;
 
+import com.strategy.application.port.inbound.DeleteSoulInboundPort;
+import com.strategy.application.port.inbound.PutSoulInboundPort;
+import com.strategy.application.port.inbound.SaveSoulInboundPort;
 import com.strategy.application.port.inbound.inputdto.SoulPutRequestDto;
 import com.strategy.application.port.inbound.inputdto.SoulSaveRequestDto;
-import com.strategy.application.processor.SoulTierManagementProcessor;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SoulManagementFacade {
 
-    private final SoulTierManagementProcessor soulTierManagementProcessor;
+    private final SaveSoulInboundPort saveSoulInboundPort;
+    private final PutSoulInboundPort putSoulInboundPort;
+    private final DeleteSoulInboundPort deleteSoulInboundPort;
 
-    public SoulManagementFacade(SoulTierManagementProcessor soulTierManagementProcessor) {
-        this.soulTierManagementProcessor = soulTierManagementProcessor;
+    public SoulManagementFacade(SaveSoulInboundPort saveSoulInboundPort, PutSoulInboundPort putSoulInboundPort, DeleteSoulInboundPort deleteSoulInboundPort) {
+        this.saveSoulInboundPort = saveSoulInboundPort;
+        this.putSoulInboundPort = putSoulInboundPort;
+        this.deleteSoulInboundPort = deleteSoulInboundPort;
     }
 
 
     public void saveSoul(SoulSaveRequestDto soulSaveRequestDto) {
-        soulTierManagementProcessor.saveSoul(soulSaveRequestDto);
+        saveSoulInboundPort.saveSoul(soulSaveRequestDto);
     }
 
     public void deleteSoul(Long id) {
-        soulTierManagementProcessor.deleteSoul(id);
+        deleteSoulInboundPort.deleteSoul(id);
     }
 
     public void putSoul(SoulPutRequestDto soulPutRequestDto) {
-        soulTierManagementProcessor.putSoul(soulPutRequestDto);
+        putSoulInboundPort.putSoul(soulPutRequestDto);
     }
 }
