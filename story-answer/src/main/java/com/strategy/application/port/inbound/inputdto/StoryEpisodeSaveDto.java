@@ -7,11 +7,11 @@ import lombok.Setter;
 @Setter
 public class StoryEpisodeSaveDto {
 
+    private Long storySoulcharacterId;
+
     private int orderNumber;
 
     private String title;
 
     private String info;
-
-    private Long storySoulcharacterId;
 }
