@@ -15,7 +15,6 @@ public class LevelValidator {
         long failValueCount = soulCharacters.stream()
                 .filter(value -> value.getLevel() < 1 || value.getLevel() > 1000)
                 .count();
-        System.out.println(failValueCount);
         if (failValueCount > 0) throw new IllegalArgumentException("유효하지 않은 레벨");
     }
 }
