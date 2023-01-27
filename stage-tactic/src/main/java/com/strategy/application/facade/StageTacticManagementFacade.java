@@ -1,60 +1,76 @@
 package com.strategy.application.facade;
 
 
+import com.strategy.application.port.inbound.*;
 import com.strategy.application.port.inbound.inputdto.*;
-import com.strategy.application.processor.SoulManagementProcessor;
-import com.strategy.application.processor.StageManagementProcessor;
-import com.strategy.application.processor.TacticManagementProcessor;
 import com.strategy.application.validator.SoulNameValidator;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StageTacticManagementFacade {
 
-    private final SoulManagementProcessor soulManagementProcessor;
-    private final TacticManagementProcessor tacticManagementProcessor;
-    private final StageManagementProcessor stageManagementProcessor;
+    private final SaveSoulInboundPort saveSoulInboundPort;
+    private final PutSoulInboundPort putSoulInboundPort;
+    private final DeleteSoulInboundPort deleteSoulInboundPort;
+    private final DeleteTacticInboundPort deleteTacticInboundPort;
+    private final PutTacticInboundPort putTacticInboundPort;
+    private final SaveStageInboundPort saveStageInboundPort;
+    private final PutStageInboundPort putStageInboundPort;
+    private final DeleteStageInboundPort deleteStageInboundPort;
     private final SoulNameValidator soulNameValidator;
 
-    public StageTacticManagementFacade(SoulManagementProcessor soulManagementProcessor, TacticManagementProcessor tacticManagementProcessor, StageManagementProcessor stageManagementProcessor, SoulNameValidator soulNameValidator) {
-        this.soulManagementProcessor = soulManagementProcessor;
-        this.tacticManagementProcessor = tacticManagementProcessor;
-        this.stageManagementProcessor = stageManagementProcessor;
+    public StageTacticManagementFacade(SaveSoulInboundPort saveSoulInboundPort,
+                                       PutSoulInboundPort putSoulInboundPort,
+                                       DeleteSoulInboundPort deleteSoulInboundPort,
+                                       DeleteTacticInboundPort deleteTacticInboundPort,
+                                       PutTacticInboundPort putTacticInboundPort,
+                                       SaveStageInboundPort saveStageInboundPort,
+                                       PutStageInboundPort putStageInboundPort,
+                                       DeleteStageInboundPort deleteStageInboundPort,
+                                       SoulNameValidator soulNameValidator) {
+        this.saveSoulInboundPort = saveSoulInboundPort;
+        this.putSoulInboundPort = putSoulInboundPort;
+        this.deleteSoulInboundPort = deleteSoulInboundPort;
+        this.deleteTacticInboundPort = deleteTacticInboundPort;
+        this.putTacticInboundPort = putTacticInboundPort;
+        this.saveStageInboundPort = saveStageInboundPort;
+        this.putStageInboundPort = putStageInboundPort;
+        this.deleteStageInboundPort = deleteStageInboundPort;
         this.soulNameValidator = soulNameValidator;
     }
 
 
     public void saveSoul(SoulSaveDto soulSaveDto) {
         soulNameValidator.checkSoulName(soulSaveDto.getName());
-        soulManagementProcessor.saveSoul(soulSaveDto);
+        saveSoulInboundPort.saveSoul(soulSaveDto);
     }
 
     public void saveStage(StageSaveDto stageSaveDto) {
-        stageManagementProcessor.saveStage(stageSaveDto);
+        saveStageInboundPort.saveStage(stageSaveDto);
     }
 
     public void deleteTactic(Long id) {
-        tacticManagementProcessor.deleteTactic(id);
+        deleteTacticInboundPort.deleteTactic(id);
     }
 
     public void deleteStage(Long id) {
-        stageManagementProcessor.deleteStage(id);
+        deleteStageInboundPort.deleteStage(id);
     }
 
     public void deleteSoul(Long id) {
-        soulManagementProcessor.deleteSoul(id);
+        deleteSoulInboundPort.deleteSoul(id);
     }
 
     public void putTactic(TacticPutDto tacticPutDto) {
-        tacticManagementProcessor.putTactic(tacticPutDto);
+        putTacticInboundPort.putTactic(tacticPutDto);
     }
 
     public void putStage(StagePutDto stagePutDto) {
-        stageManagementProcessor.putStage(stagePutDto);
+        putStageInboundPort.putStage(stagePutDto);
     }
 
     public void putSoul(SoulPutDto soulPutDto) {
         soulNameValidator.checkSoulName(soulPutDto.getName());
-        soulManagementProcessor.putSoul(soulPutDto);
+        putSoulInboundPort.putSoul(soulPutDto);
     }
 }
