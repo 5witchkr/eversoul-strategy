@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class StageTacticManagementFacade {
 
-    private final SaveSoulInboundPort saveSoulInboundPort;
-    private final PutSoulInboundPort putSoulInboundPort;
-    private final DeleteSoulInboundPort deleteSoulInboundPort;
+    private final SaveTacticSoulInboundPort saveTacticSoulInboundPort;
+    private final PutTacticSoulInboundPort putTacticSoulInboundPort;
+    private final DeleteTacticSoulInboundPort deleteTacticSoulInboundPort;
     private final DeleteTacticInboundPort deleteTacticInboundPort;
     private final PutTacticInboundPort putTacticInboundPort;
     private final SaveStageInboundPort saveStageInboundPort;
@@ -19,18 +19,18 @@ public class StageTacticManagementFacade {
     private final DeleteStageInboundPort deleteStageInboundPort;
     private final SoulNameValidator soulNameValidator;
 
-    public StageTacticManagementFacade(SaveSoulInboundPort saveSoulInboundPort,
-                                       PutSoulInboundPort putSoulInboundPort,
-                                       DeleteSoulInboundPort deleteSoulInboundPort,
+    public StageTacticManagementFacade(SaveTacticSoulInboundPort saveTacticSoulInboundPort,
+                                       PutTacticSoulInboundPort putTacticSoulInboundPort,
+                                       DeleteTacticSoulInboundPort deleteTacticSoulInboundPort,
                                        DeleteTacticInboundPort deleteTacticInboundPort,
                                        PutTacticInboundPort putTacticInboundPort,
                                        SaveStageInboundPort saveStageInboundPort,
                                        PutStageInboundPort putStageInboundPort,
                                        DeleteStageInboundPort deleteStageInboundPort,
                                        SoulNameValidator soulNameValidator) {
-        this.saveSoulInboundPort = saveSoulInboundPort;
-        this.putSoulInboundPort = putSoulInboundPort;
-        this.deleteSoulInboundPort = deleteSoulInboundPort;
+        this.saveTacticSoulInboundPort = saveTacticSoulInboundPort;
+        this.putTacticSoulInboundPort = putTacticSoulInboundPort;
+        this.deleteTacticSoulInboundPort = deleteTacticSoulInboundPort;
         this.deleteTacticInboundPort = deleteTacticInboundPort;
         this.putTacticInboundPort = putTacticInboundPort;
         this.saveStageInboundPort = saveStageInboundPort;
@@ -42,7 +42,7 @@ public class StageTacticManagementFacade {
 
     public void saveSoul(SoulSaveDto soulSaveDto) {
         soulNameValidator.checkSoulName(soulSaveDto.getName());
-        saveSoulInboundPort.saveSoul(soulSaveDto);
+        saveTacticSoulInboundPort.saveSoul(soulSaveDto);
     }
 
     public void saveStage(StageSaveDto stageSaveDto) {
@@ -58,7 +58,7 @@ public class StageTacticManagementFacade {
     }
 
     public void deleteSoul(Long id) {
-        deleteSoulInboundPort.deleteSoul(id);
+        deleteTacticSoulInboundPort.deleteSoul(id);
     }
 
     public void putTactic(TacticPutDto tacticPutDto) {
@@ -71,6 +71,6 @@ public class StageTacticManagementFacade {
 
     public void putSoul(SoulPutDto soulPutDto) {
         soulNameValidator.checkSoulName(soulPutDto.getName());
-        putSoulInboundPort.putSoul(soulPutDto);
+        putTacticSoulInboundPort.putSoul(soulPutDto);
     }
 }
