@@ -1,20 +1,20 @@
 package com.strategy.application.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.TacticSoulcharacter;
-import com.strategy.application.port.inbound.DeleteSoulInboundPort;
-import com.strategy.application.port.inbound.PutSoulInboundPort;
-import com.strategy.application.port.inbound.SaveSoulInboundPort;
+import com.strategy.application.port.inbound.DeleteTacticSoulInboundPort;
+import com.strategy.application.port.inbound.PutTacticSoulInboundPort;
+import com.strategy.application.port.inbound.SaveTacticSoulInboundPort;
 import com.strategy.application.port.inbound.inputdto.SoulPutDto;
 import com.strategy.application.port.inbound.inputdto.SoulSaveDto;
 import com.strategy.application.port.outbound.TacticSoulcharacterOutboundPort;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SoulManagementProcessor implements SaveSoulInboundPort, PutSoulInboundPort, DeleteSoulInboundPort {
+public class TacticSoulManagementProcessor implements SaveTacticSoulInboundPort, PutTacticSoulInboundPort, DeleteTacticSoulInboundPort {
 
     private final TacticSoulcharacterOutboundPort tacticSoulcharacterOutboundPort;
 
-    public SoulManagementProcessor(TacticSoulcharacterOutboundPort tacticSoulcharacterOutboundPort) {
+    public TacticSoulManagementProcessor(TacticSoulcharacterOutboundPort tacticSoulcharacterOutboundPort) {
         this.tacticSoulcharacterOutboundPort = tacticSoulcharacterOutboundPort;
     }
 
