@@ -1,5 +1,5 @@
 package com.strategy.application.port.inbound;
 
-public interface DeleteSoulInboundPort {
+public interface DeleteTacticSoulInboundPort {
     void deleteSoul(Long id);
 }
