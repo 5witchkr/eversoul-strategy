@@ -22,7 +22,7 @@ public class LevelValidatorTests {
         levelValidator = new LevelValidator();
         final SoulCharacterTacticRequestDto dto1 = SoulCharacterTacticRequestDto.builder().name("메피").level(101).build();
         final SoulCharacterTacticRequestDto dto2 = SoulCharacterTacticRequestDto.builder().name("미리암").level(181).build();
-        final SoulCharacterTacticRequestDto dto3 = SoulCharacterTacticRequestDto.builder().name("무명").level(1).build();
+        final SoulCharacterTacticRequestDto dto3 = SoulCharacterTacticRequestDto.builder().name("도라").level(1).build();
         final List<SoulCharacterTacticRequestDto> value = List.of(dto1, dto2, dto3);
 
         return Stream.of(
@@ -37,8 +37,8 @@ public class LevelValidatorTests {
     Stream<DynamicTest> checkLevelByDtosFail() {
         levelValidator = new LevelValidator();
         final SoulCharacterTacticRequestDto dto1 = SoulCharacterTacticRequestDto.builder().name("메피").level(0).build();
-        final SoulCharacterTacticRequestDto dto2 = SoulCharacterTacticRequestDto.builder().name("미리암").level(1175).build();
-        final SoulCharacterTacticRequestDto dto3 = SoulCharacterTacticRequestDto.builder().name("무명").level(-10).build();
+        final SoulCharacterTacticRequestDto dto2 = SoulCharacterTacticRequestDto.builder().name("미리암").level(2001).build();
+        final SoulCharacterTacticRequestDto dto3 = SoulCharacterTacticRequestDto.builder().name("도라").level(-10).build();
         final List<SoulCharacterTacticRequestDto> value1 = List.of(dto1);
         final List<SoulCharacterTacticRequestDto> value2 = List.of(dto2);
         final List<SoulCharacterTacticRequestDto> value3 = List.of(dto3);
