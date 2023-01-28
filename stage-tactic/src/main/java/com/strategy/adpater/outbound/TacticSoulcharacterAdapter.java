@@ -42,5 +42,10 @@ public class TacticSoulcharacterAdapter implements TacticSoulcharacterOutboundPo
         return tacticSoulcharacterRepository.existsByName(name);
     }
 
+    @Override
+    public TacticSoulcharacter getByReferenceId(Long id) {
+        return tacticSoulcharacterRepository.getReferenceById(id);
+    }
+
 
 }
