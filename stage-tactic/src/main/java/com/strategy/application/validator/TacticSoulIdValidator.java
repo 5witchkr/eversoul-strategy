@@ -3,6 +3,7 @@ package com.strategy.application.validator;
 
 import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticRequestDto;
 import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticValidReqDto;
+import com.strategy.soulconstant.SoulNameConstants;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
