@@ -21,10 +21,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("throw IllegalArgumentException : {}", illegalArgumentException.getMessage());
         return new ResponseEntity<>(illegalArgumentException.getMessage(), HttpStatus.NOT_FOUND);
     }
-
-//    @ExceptionHandler(value = RuntimeException.class)
-//    protected ResponseEntity<Object> handlingRuntime(RuntimeException runtimeException) {
-//        log.error("Error!");
-//        return new ResponseEntity<>(runtimeException.getMessage(), HttpStatus.NOT_FOUND);
-//    }
 }
