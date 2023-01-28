@@ -14,4 +14,6 @@ public interface TacticSoulcharacterOutboundPort {
     Optional<TacticSoulcharacter> findById(Long id);
 
     boolean existsByName(String name);
+
+    TacticSoulcharacter getByReferenceId(Long id);
 }
