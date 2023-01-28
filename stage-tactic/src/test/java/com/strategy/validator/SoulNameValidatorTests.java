@@ -23,7 +23,7 @@ public class SoulNameValidatorTests {
         soulNameValidator = new SoulNameValidator();
         final SoulCharacterTacticRequestDto dto1 = SoulCharacterTacticRequestDto.builder().name("메피").level(101).build();
         final SoulCharacterTacticRequestDto dto2 = SoulCharacterTacticRequestDto.builder().name("미리암").level(181).build();
-        final SoulCharacterTacticRequestDto dto3 = SoulCharacterTacticRequestDto.builder().name("무명").level(1).build();
+        final SoulCharacterTacticRequestDto dto3 = SoulCharacterTacticRequestDto.builder().name("지호").level(1).build();
         final List<SoulCharacterTacticRequestDto> value = List.of(dto1, dto2, dto3);
 
         return Stream.of(

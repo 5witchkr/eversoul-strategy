@@ -22,6 +22,7 @@ public class StageTacticFacade {
     private final PositionValidator positionValidator;
     private final PowerValidator powerValidator;
     private final SoulNameValidator soulNameValidator;
+    private final TacticSoulIdValidator tacticSoulIdValidator;
 
 
 
@@ -33,7 +34,7 @@ public class StageTacticFacade {
                              LevelValidator levelValidator,
                              PositionValidator positionValidator,
                              PowerValidator powerValidator,
-                             SoulNameValidator soulNameValidator) {
+                             SoulNameValidator soulNameValidator, TacticSoulIdValidator tacticSoulIdValidator) {
         this.getRecommendInboundProt = getRecommendInboundProt;
         this.postTacticInboundPort = postTacticInboundPort;
         this.banSoulsValidator = banSoulsValidator;
@@ -43,6 +44,7 @@ public class StageTacticFacade {
         this.positionValidator = positionValidator;
         this.powerValidator = powerValidator;
         this.soulNameValidator = soulNameValidator;
+        this.tacticSoulIdValidator = tacticSoulIdValidator;
     }
 
     public List<RecommendTacticResponseDto> getRecommendWithoutBans(int location, int step, List<String> bans) {
@@ -61,6 +63,8 @@ public class StageTacticFacade {
         levelValidator.checkLevelByDtos(tacticRequestDto.getSoulCharacters());
         soulNameValidator.checkSoulNameByDtos(tacticRequestDto.getSoulCharacters());
         soulNameValidator.checkDuplicateSoul(tacticRequestDto.getSoulCharacters());
-        postTacticInboundPort.postTactic(tacticRequestDto);
+        postTacticInboundPort.postTactic(
+                tacticRequestDto,
+                tacticSoulIdValidator.parseSoulNameToSoulId(tacticRequestDto.getSoulCharacters()));
     }
 }

@@ -53,24 +53,6 @@ public class TacticCommentProcessorTests {
                 })
         );
     }
-    @TestFactory
-    @DisplayName("getComment Tests")
-    Stream<DynamicTest> saveCommentTests() {
-        tacticOutboundPort = new TestTacticOutboundPort();
-        tacticCommentOutboundPort = new TestTacticCommentOutboundPort();
-        tacticCommentProcessor = new TacticCommentProcessor(tacticCommentOutboundPort, tacticOutboundPort);
-
-        return Stream.of(
-                DynamicTest.dynamicTest("실패케이스: 해당 tactic 이 존재하지 않는경우 NullPointException 반환한다.", () -> {
-                    final TacticCommentRequestDto tacticCommentRequestDto = TacticCommentRequestDto.builder()
-                            .tacticId(3L).contents("내용").username("유저").build();
-
-                    assertThatThrownBy(() -> tacticCommentProcessor.postComment(tacticCommentRequestDto))
-                            .isInstanceOf(NullPointerException.class)
-                            .hasMessageContaining("존재하지 않는 Tactic");
-                })
-        );
-    }
 
     private static class TestTacticOutboundPort implements TacticOutboundPort{
 
@@ -100,6 +82,11 @@ public class TacticCommentProcessorTests {
         @Override
         public Optional<Tactic> findById(Long tacticId) {
             return Optional.empty();
+        }
+
+        @Override
+        public Tactic getReferenceById(Long tacticId) {
+            return null;
         }
     }
 

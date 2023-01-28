@@ -36,4 +36,9 @@ public class TacticAdapter implements TacticOutboundPort {
     public Optional<Tactic> findById(Long tacticId) {
         return tacticRepository.findById(tacticId);
     }
+
+    @Override
+    public Tactic getReferenceById(Long tacticId) {
+        return tacticRepository.getReferenceById(tacticId);
+    }
 }
