@@ -1,4 +1,4 @@
-package com.strategy.soulconstant;
+package com.strategy.constantmodel;
 
 import java.util.List;
 
