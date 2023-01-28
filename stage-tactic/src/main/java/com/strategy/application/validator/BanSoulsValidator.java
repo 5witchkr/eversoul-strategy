@@ -1,6 +1,6 @@
 package com.strategy.application.validator;
 
-import com.strategy.soulconstant.SoulNameConstants;
+import com.strategy.constantmodel.SoulNameConstants;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -22,22 +22,20 @@ public class GetSoulEndingByEpisodeProcessor implements GetSoulEndingByEpisodeIn
 
     private final StorySoulcharacterOutboundPort storySoulcharacterOutboundPort;
     private final StoryEpisodeOutboundPort storyEpisodeOutboundPort;
-    private final StoryQuestionOutboundPort storyQuestionOutboundPort;
-    private final StoryAnswerOutboundPort storyAnswerOutboundPort;
+
 
     public GetSoulEndingByEpisodeProcessor(StorySoulcharacterOutboundPort storySoulcharacterOutboundPort,
-                                           StoryEpisodeOutboundPort storyEpisodeOutboundPort,
-                                           StoryQuestionOutboundPort storyQuestionOutboundPort,
-                                           StoryAnswerOutboundPort storyAnswerOutboundPort) {
+                                           StoryEpisodeOutboundPort storyEpisodeOutboundPort) {
         this.storySoulcharacterOutboundPort = storySoulcharacterOutboundPort;
         this.storyEpisodeOutboundPort = storyEpisodeOutboundPort;
-        this.storyQuestionOutboundPort = storyQuestionOutboundPort;
-        this.storyAnswerOutboundPort = storyAnswerOutboundPort;
     }
 
     @Override
     public List<StoryQuestionEndingResponseDto> getSoulEndingAllEpisode(String soul, String ending) {
 
+        //todo refactor this method remove and
+        // getByOrderNumberAndStorySoulcharacter ->
+        // getByOrderNumberAndStorySoulcharacter_StorySoulcharacterIdx
         StorySoulcharacter storySoulcharacter =storySoulcharacterOutboundPort.getByName(soul);
 
         return storyEpisodeOutboundPort.getByOrderNumberAndStorySoulcharacter(0, storySoulcharacter)
