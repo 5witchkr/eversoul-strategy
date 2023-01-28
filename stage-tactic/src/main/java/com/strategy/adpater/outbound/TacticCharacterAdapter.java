@@ -6,6 +6,8 @@ import com.strategy.adpater.outbound.persistence.repository.TacticCharacterRepos
 import com.strategy.application.port.outbound.TacticCharacterOutboundPort;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class TacticCharacterAdapter implements TacticCharacterOutboundPort {
 
@@ -18,5 +20,10 @@ public class TacticCharacterAdapter implements TacticCharacterOutboundPort {
     @Override
     public TacticCharacter save(TacticCharacter tacticCharacter) {
         return tacticCharacterRepository.save(tacticCharacter);
+    }
+
+    @Override
+    public List<TacticCharacter> saveAll(List<TacticCharacter> tacticCharacters) {
+        return tacticCharacterRepository.saveAll(tacticCharacters);
     }
 }
