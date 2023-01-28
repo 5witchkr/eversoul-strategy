@@ -8,6 +8,8 @@ import com.strategy.application.port.inbound.inputdto.TacticCommentRequestDto;
 import com.strategy.application.port.inbound.outputdto.TacticCommentResponseDto;
 import com.strategy.application.port.outbound.TacticCommentOutboundPort;
 import com.strategy.application.port.outbound.TacticOutboundPort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,6 +20,8 @@ public class TacticCommentProcessor implements GetTacticCommentInboundPort, Post
 
     private final TacticCommentOutboundPort tacticCommentOutboundPort;
     private final TacticOutboundPort tacticOutboundPort;
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+
 
     public TacticCommentProcessor(TacticCommentOutboundPort tacticCommentOutboundPort, TacticOutboundPort tacticOutboundPort) {
         this.tacticCommentOutboundPort = tacticCommentOutboundPort;
@@ -49,14 +53,23 @@ public class TacticCommentProcessor implements GetTacticCommentInboundPort, Post
         TacticComment tacticComment = TacticComment.builder()
                 .contents(tacticCommentRequestDto.getContents())
                 .username(tacticCommentRequestDto.getUsername())
-                .tactic(findTactic(tacticCommentRequestDto.getTacticId()))
+                .tactic(getByReferenceTactic(tacticCommentRequestDto.getTacticId()))
                 .build();
-        tacticCommentOutboundPort.save(tacticComment);
+        try {
+            tacticCommentOutboundPort.save(tacticComment);
+        } catch (RuntimeException runtimeException){
+            log.warn("tactic not exists");
+            throw new NullPointerException("존재하지 않는 Tactic");
+        };
     }
 
     private Tactic findTactic(Long tacticId){
         return tacticOutboundPort.findById(tacticId)
                 .orElseThrow(() -> new NullPointerException("존재하지 않는 Tactic"));
+    }
+
+    private Tactic getByReferenceTactic(Long tacticId){
+        return tacticOutboundPort.getReferenceById(tacticId);
     }
 
     private Tactic getTactic(Long tacticId) {
