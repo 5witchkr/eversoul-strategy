@@ -3,3 +3,5 @@ include 'stage-tactic'
 include 'story-answer'
 include 'core'
 include 'soul-character'
+include 'util-module'
+
