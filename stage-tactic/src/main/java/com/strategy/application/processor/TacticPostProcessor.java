@@ -38,7 +38,7 @@ public class TacticPostProcessor implements PostTacticInboundPort {
 
     @Override
     @Transactional
-    public void postTactic(TacticRequestDto tacticRequestDto, List<SoulCharacterTacticValidReqDto> soulCharacterTacticValidReqDtos) {
+    public void postTactic(TacticRequestDto tacticRequestDto) {
         Tactic tactic = tacticOutboundPort.save(Tactic.builder()
                 .stage(getByLocationAndStep(tacticRequestDto.getLocation(), tacticRequestDto.getStep()))
                 .info(tacticRequestDto.getInfo())
@@ -46,7 +46,7 @@ public class TacticPostProcessor implements PostTacticInboundPort {
                 .power(tacticRequestDto.getPower())
                 .build());
 
-        inputTacticCharacter(soulCharacterTacticValidReqDtos, tactic);
+        inputTacticCharacter(tacticRequestDto.getSoulCharacters(), tactic);
     }
 
 
