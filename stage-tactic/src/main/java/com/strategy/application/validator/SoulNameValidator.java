@@ -2,6 +2,7 @@ package com.strategy.application.validator;
 
 
 import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticRequestDto;
+import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticValidReqDto;
 import com.strategy.constantmodel.SoulNameConstants;
 import org.springframework.stereotype.Component;
 
@@ -19,9 +20,9 @@ public class SoulNameValidator {
         soulCharacters.forEach(dto -> checkSoulName(dto.getName()));
     }
 
-    public void checkDuplicateSoul(List<SoulCharacterTacticRequestDto> soulCharacters){
+    public void checkDuplicateSoul(List<SoulCharacterTacticValidReqDto> soulCharacters){
         if (soulCharacters.stream()
-                .map(SoulCharacterTacticRequestDto::getName)
+                .map(SoulCharacterTacticValidReqDto::getSoulId)
                 .distinct()
                 .count() != soulCharacters.size()){
             throw new RuntimeException("중복된 정령정보 입력");
