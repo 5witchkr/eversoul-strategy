@@ -1,7 +1,7 @@
 package com.strategy.application.validator;
 
 
-import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticRequestDto;
+import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticValidReqDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class LevelValidator {
 
     public void checkLevel(int level){}
 
-    public void checkLevelByDtos(List<SoulCharacterTacticRequestDto> soulCharacters) {
+    public void checkLevelByDtos(List<SoulCharacterTacticValidReqDto> soulCharacters) {
         long failValueCount = soulCharacters.stream()
                 .filter(value -> 1 > value.getLevel() || value.getLevel() > 2000)
                 .count();
