@@ -14,4 +14,13 @@ public interface StoryEpisodeOutboundPort {
     Optional<StoryEpisode> findById(Long storyEpisodeId);
 
     void deleteById(Long id);
+
+
+    /**
+     * @deprecated May cause an "outer left join"
+     * @param orderNumber
+     * @param storySoulcharacterId
+     * @return
+     */
+    StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId);
 }
