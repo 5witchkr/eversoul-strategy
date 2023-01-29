@@ -29,5 +29,13 @@ public class TacticSoulIdValidator {
     private Long NameToSoulId(String soulName){
         return (long) (SoulNameConstants.allSoulNames.indexOf(soulName) + 1);
     }
+
+
+    public void checkSoulId(List<SoulCharacterTacticValidReqDto> soulCharacters) {
+        if (soulCharacters.stream().allMatch(v -> 0L < v.getSoulId() && v.getSoulId() < 32L)){
+            return;
+        }
+        throw new IllegalArgumentException("유효하지 않은 정령정보");
+    }
 }
 
