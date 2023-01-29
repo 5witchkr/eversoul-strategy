@@ -3,6 +3,7 @@ package com.strategy.application.validator;
 
 import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticRequestDto;
 import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticValidReqDto;
+import com.strategy.constantmodel.SoulIdEnum;
 import com.strategy.constantmodel.SoulNameConstants;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +33,11 @@ public class TacticSoulIdValidator {
 
 
     public void checkSoulId(List<SoulCharacterTacticValidReqDto> soulCharacters) {
-        if (soulCharacters.stream().allMatch(v -> 0L < v.getSoulId() && v.getSoulId() < 32L)){
+        if (soulCharacters.stream()
+                .allMatch(dto ->
+                        SoulIdEnum.SOUL_ID_START.getValue()
+                                <= dto.getSoulId() && dto.getSoulId() <=
+                                SoulIdEnum.SOUL_ID_END.getValue())){
             return;
         }
         throw new IllegalArgumentException("유효하지 않은 정령정보");
