@@ -19,10 +19,10 @@ public class StoryApi {
     }
 
 
-    @GetMapping("/{soul}")
-    public ResponseEntity<List<StoryQuestionEndingResponseDto>> recommendTactic(@PathVariable String soul,
+    @GetMapping("/{soulId}")
+    public ResponseEntity<List<StoryQuestionEndingResponseDto>> recommendTactic(@PathVariable Long soulId,
                                                                                 @RequestParam int episode,
                                                                                 @RequestParam String ending) {
-        return ResponseEntity.ok().body(storyEndingFacade.getSoulEndingByEpisode(soul,episode,ending));
+        return ResponseEntity.ok().body(storyEndingFacade.getSoulEndingByEpisode(soulId,episode,ending));
     }
 }
