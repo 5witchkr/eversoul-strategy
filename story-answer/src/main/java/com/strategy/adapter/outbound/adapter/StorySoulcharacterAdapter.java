@@ -36,4 +36,9 @@ public class StorySoulcharacterAdapter implements StorySoulcharacterOutboundPort
     public Optional<StorySoulcharacter> findById(Long storySoulcharacterId) {
         return storySoulcharacterRepository.findById(storySoulcharacterId);
     }
+
+    @Override
+    public StorySoulcharacter getByReferenceId(Long soulId) {
+        return storySoulcharacterRepository.getReferenceById(soulId);
+    }
 }
