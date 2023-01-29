@@ -36,7 +36,7 @@ public class GetSoulEndingByEpisodeProcessorTests {
         getSoulEndingByEpisodeProcessor = new GetSoulEndingByEpisodeProcessor(
                 storySoulcharacterOutboundPort, storyEpisodeOutboundPort);
 
-        final String soul = "아드리안";
+        final Long soulId = 1L;
 
         final StoryQuestionEndingResponseDto questionInfoDto1 =
                 StoryQuestionEndingResponseDto.builder().orderNumber(1).storyAnswerResponseDtos(
@@ -55,7 +55,7 @@ public class GetSoulEndingByEpisodeProcessorTests {
                 DynamicTest.dynamicTest("성공케이스1: 해당정령의 모든 에피소드 트루엔딩을 리턴한다.", () -> {
 
                     List<StoryQuestionEndingResponseDto> result =
-                            getSoulEndingByEpisodeProcessor.getSoulEndingAllEpisode(soul, "TRUE");
+                            getSoulEndingByEpisodeProcessor.getSoulEndingAllEpisode(soulId, "TRUE");
 
                     assertThat(result.size()).isEqualTo(3);
                     assertThat(result.get(0)).isInstanceOf(StoryQuestionEndingResponseDto.class);
@@ -86,6 +86,11 @@ public class GetSoulEndingByEpisodeProcessorTests {
         @Override
         public Optional<StorySoulcharacter> findById(Long storySoulcharacterId) {
             return Optional.empty();
+        }
+
+        @Override
+        public StorySoulcharacter getByReferenceId(Long soulId) {
+            return null;
         }
     }
 
@@ -137,6 +142,12 @@ public class GetSoulEndingByEpisodeProcessorTests {
         @Override
         public void deleteById(Long id) {
 
+        }
+
+        @Override
+        public StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int i, Long storySoulcharacter) {
+
+            return null;
         }
     }
 }
