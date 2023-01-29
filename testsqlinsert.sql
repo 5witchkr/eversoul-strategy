@@ -1,5 +1,6 @@
 insert into story_soulcharacter (name, tier, type)
 values
+('아드리안','SSS','천사'),
 ('캐서린', 'SSS', '인간'),
 ('탈리아', 'SSS', '요정'),
 ('재클린', 'SSS', '불사'),
