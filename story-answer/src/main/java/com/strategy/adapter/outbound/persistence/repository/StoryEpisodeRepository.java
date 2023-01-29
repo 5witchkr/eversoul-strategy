@@ -8,4 +8,6 @@ public interface StoryEpisodeRepository extends JpaRepository<StoryEpisode, Long
 
     StoryEpisode getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter);
 
+
+    StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId);
 }
