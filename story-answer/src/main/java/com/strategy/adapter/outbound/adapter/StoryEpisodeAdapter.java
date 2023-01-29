@@ -37,4 +37,9 @@ public class StoryEpisodeAdapter implements StoryEpisodeOutboundPort {
     public void deleteById(Long id) {
         storyEpisodeRepository.deleteById(id);
     }
+
+    @Override
+    public StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId) {
+        return storyEpisodeRepository.getByOrderNumberAndStorySoulcharacter_Id(orderNumber, storySoulcharacterId);
+    }
 }

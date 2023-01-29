@@ -31,12 +31,9 @@ public class GetSoulEndingByEpisodeProcessor implements GetSoulEndingByEpisodeIn
     }
 
     @Override
-    public List<StoryQuestionEndingResponseDto> getSoulEndingAllEpisode(String soul, String ending) {
+    public List<StoryQuestionEndingResponseDto> getSoulEndingAllEpisode(Long soulId, String ending) {
 
-        //todo refactor this method remove and
-        // getByOrderNumberAndStorySoulcharacter ->
-        // getByOrderNumberAndStorySoulcharacter_StorySoulcharacterIdx
-        StorySoulcharacter storySoulcharacter =storySoulcharacterOutboundPort.getByName(soul);
+        StorySoulcharacter storySoulcharacter =storySoulcharacterOutboundPort.getByReferenceId(soulId);
 
         return storyEpisodeOutboundPort.getByOrderNumberAndStorySoulcharacter(0, storySoulcharacter)
                 .getStoryQuestions().stream()
@@ -77,8 +74,9 @@ public class GetSoulEndingByEpisodeProcessor implements GetSoulEndingByEpisodeIn
         return storyAnswerResponseDto.build();
     }
 
+
     @Override
-    public List<StoryQuestionEndingResponseDto> getSoulEndingByEpisode(String soul, int episode, String ending) {
+    public List<StoryQuestionEndingResponseDto> getSoulEndingByEpisode(Long soulId, int episode, String ending) {
         return null;
     }
 }

@@ -12,4 +12,6 @@ public interface StorySoulcharacterOutboundPort {
     void deleteById(Long id);
 
     Optional<StorySoulcharacter> findById(Long storySoulcharacterId);
+
+    StorySoulcharacter getByReferenceId(Long soulId);
 }
