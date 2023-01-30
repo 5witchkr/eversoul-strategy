@@ -5,7 +5,7 @@ import com.strategy.adapter.outbound.persistence.SoulCharacter;
 import java.util.Optional;
 
 public interface SoulManagementOutboundPort {
-    void save(SoulCharacter soulCharacter);
+    SoulCharacter save(SoulCharacter soulCharacter);
 
     Optional<SoulCharacter> findById(Long id);
 
