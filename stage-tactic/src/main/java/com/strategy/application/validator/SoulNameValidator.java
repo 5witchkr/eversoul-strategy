@@ -25,7 +25,7 @@ public class SoulNameValidator {
                 .map(SoulCharacterTacticValidReqDto::getSoulId)
                 .distinct()
                 .count() != soulCharacters.size()){
-            throw new RuntimeException("중복된 정령정보 입력");
+            throw new IllegalArgumentException("중복된 정령정보 입력");
         }
     }
 }
