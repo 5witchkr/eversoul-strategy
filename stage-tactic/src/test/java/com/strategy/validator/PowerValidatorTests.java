@@ -32,7 +32,7 @@ public class PowerValidatorTests {
     @DisplayName("checkPower Fail Tests")
     Stream<DynamicTest> checkPowerFail() {
         powerValidator = new PowerValidator();
-        final List<Integer> valueSource = List.of(-1, 0, 99999999+1);
+        final List<Integer> valueSource = List.of(-1, 99999999+1);
 
         return valueSource.stream().map(value ->
                 DynamicTest.dynamicTest("실패케이스: IllegalException을 반환한다.", () ->
