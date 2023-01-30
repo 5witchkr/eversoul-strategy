@@ -1,11 +1,11 @@
 package com.strategy.application.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.TacticSoulcharacter;
-import com.strategy.application.port.inbound.DeleteTacticSoulInboundPort;
-import com.strategy.application.port.inbound.PutTacticSoulInboundPort;
-import com.strategy.application.port.inbound.SaveTacticSoulInboundPort;
-import com.strategy.application.port.inbound.inputdto.SoulPutDto;
-import com.strategy.application.port.inbound.inputdto.SoulSaveDto;
+import com.strategy.application.port.inbound.portsoul.DeleteTacticSoulInboundPort;
+import com.strategy.application.port.inbound.portsoul.PutTacticSoulInboundPort;
+import com.strategy.application.port.inbound.portsoul.SaveTacticSoulInboundPort;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulPutDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulSaveDto;
 import com.strategy.application.port.outbound.TacticSoulcharacterOutboundPort;
 import org.springframework.stereotype.Component;
 

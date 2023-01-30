@@ -1,8 +1,8 @@
 package com.strategy.application.processor;
 
-import com.strategy.application.port.inbound.DeleteTacticInboundPort;
-import com.strategy.application.port.inbound.PutTacticInboundPort;
-import com.strategy.application.port.inbound.inputdto.TacticPutDto;
+import com.strategy.application.port.inbound.porttactic.DeleteTacticInboundPort;
+import com.strategy.application.port.inbound.porttactic.PutTacticInboundPort;
+import com.strategy.application.port.inbound.inputdto.tacticdto.TacticPutDto;
 import com.strategy.application.port.outbound.TacticOutboundPort;
 import org.springframework.stereotype.Component;
 

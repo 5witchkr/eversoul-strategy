@@ -1,6 +1,6 @@
 package com.strategy.validator;
 
-import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticRequestDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulCharacterTacticRequestDto;
 import com.strategy.application.validator.SoulNameValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;

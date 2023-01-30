@@ -1,7 +1,7 @@
 package com.strategy.application.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.Tactic;
-import com.strategy.application.port.inbound.TacticRecommendInboundPort;
+import com.strategy.application.port.inbound.portrecommend.TacticRecommendInboundPort;
 import com.strategy.application.port.outbound.TacticOutboundPort;
 import com.strategy.application.port.outbound.RedisTacticRecommendOutboundPort;
 import org.springframework.stereotype.Component;

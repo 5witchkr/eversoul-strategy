@@ -1,4 +1,4 @@
-package com.strategy.application.port.inbound.inputdto;
+package com.strategy.application.port.inbound.inputdto.commentdto;
 
 
 import lombok.Builder;

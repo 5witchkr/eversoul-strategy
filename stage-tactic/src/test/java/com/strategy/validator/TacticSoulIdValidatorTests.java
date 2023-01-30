@@ -1,9 +1,9 @@
 package com.strategy.validator;
 
 
-import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticValidReqDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulCharacterTacticValidReqDto;
 import com.strategy.application.validator.TacticSoulIdValidator;
-import com.strategy.constantmodel.SoulIdEnum;
+import com.strategy.enummodel.SoulIdEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;

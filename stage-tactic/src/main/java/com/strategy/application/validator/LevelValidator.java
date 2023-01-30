@@ -1,7 +1,7 @@
 package com.strategy.application.validator;
 
 
-import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticValidReqDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulCharacterTacticValidReqDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

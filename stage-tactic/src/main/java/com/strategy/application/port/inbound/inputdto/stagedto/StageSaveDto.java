@@ -1,5 +1,4 @@
-package com.strategy.application.port.inbound.inputdto;
-
+package com.strategy.application.port.inbound.inputdto.stagedto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,8 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class StagePutDto {
-    private Long id;
+public class StageSaveDto {
 
     private int location;
 

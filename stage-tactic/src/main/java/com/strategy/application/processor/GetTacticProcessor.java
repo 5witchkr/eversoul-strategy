@@ -3,7 +3,7 @@ package com.strategy.application.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.Tactic;
 import com.strategy.adpater.outbound.persistence.entity.TacticCharacter;
-import com.strategy.application.port.inbound.GetTacticInboundPort;
+import com.strategy.application.port.inbound.porttactic.GetTacticInboundPort;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 import com.strategy.application.port.inbound.outputdto.SoulCharacterTacticResponseDto;
 import com.strategy.application.port.outbound.StageOutboundPort;

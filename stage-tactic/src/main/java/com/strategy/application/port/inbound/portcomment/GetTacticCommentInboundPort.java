@@ -1,4 +1,4 @@
-package com.strategy.application.port.inbound;
+package com.strategy.application.port.inbound.portcomment;
 
 import com.strategy.application.port.inbound.outputdto.TacticCommentResponseDto;
 

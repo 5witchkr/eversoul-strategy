@@ -1,4 +1,4 @@
-package com.strategy.constantmodel;
+package com.strategy.enummodel;
 
 public enum SoulIdEnum {
     SOUL_ID_START(1L),

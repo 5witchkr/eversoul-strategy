@@ -1,11 +1,11 @@
 package com.strategy.application.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.Stage;
-import com.strategy.application.port.inbound.DeleteStageInboundPort;
-import com.strategy.application.port.inbound.PutStageInboundPort;
-import com.strategy.application.port.inbound.SaveStageInboundPort;
-import com.strategy.application.port.inbound.inputdto.StagePutDto;
-import com.strategy.application.port.inbound.inputdto.StageSaveDto;
+import com.strategy.application.port.inbound.portstage.DeleteStageInboundPort;
+import com.strategy.application.port.inbound.portstage.PutStageInboundPort;
+import com.strategy.application.port.inbound.portstage.SaveStageInboundPort;
+import com.strategy.application.port.inbound.inputdto.stagedto.StagePutDto;
+import com.strategy.application.port.inbound.inputdto.stagedto.StageSaveDto;
 import com.strategy.application.port.outbound.StageOutboundPort;
 import org.springframework.stereotype.Component;
 

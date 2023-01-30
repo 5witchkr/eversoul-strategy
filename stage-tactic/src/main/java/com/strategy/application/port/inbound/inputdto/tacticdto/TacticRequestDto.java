@@ -1,6 +1,7 @@
-package com.strategy.application.port.inbound.inputdto;
+package com.strategy.application.port.inbound.inputdto.tacticdto;
 
 
+import com.strategy.application.port.inbound.inputdto.souldto.SoulCharacterTacticValidReqDto;
 import lombok.Getter;
 import lombok.Setter;
 

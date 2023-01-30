@@ -3,7 +3,6 @@ package com.strategy.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.Tactic;
 import com.strategy.adpater.outbound.persistence.entity.TacticComment;
-import com.strategy.application.port.inbound.inputdto.TacticCommentRequestDto;
 import com.strategy.application.port.inbound.outputdto.TacticCommentResponseDto;
 import com.strategy.application.port.outbound.TacticCommentOutboundPort;
 import com.strategy.application.port.outbound.TacticOutboundPort;

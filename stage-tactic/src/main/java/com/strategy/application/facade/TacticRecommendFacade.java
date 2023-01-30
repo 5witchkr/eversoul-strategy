@@ -1,7 +1,7 @@
 package com.strategy.application.facade;
 
 
-import com.strategy.application.port.inbound.TacticRecommendInboundPort;
+import com.strategy.application.port.inbound.portrecommend.TacticRecommendInboundPort;
 import org.springframework.stereotype.Service;
 
 @Service

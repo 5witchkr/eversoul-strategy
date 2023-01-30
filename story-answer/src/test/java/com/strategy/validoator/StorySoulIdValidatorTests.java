@@ -1,7 +1,7 @@
 package com.strategy.validoator;
 
 import com.strategy.application.validator.StorySoulIdValidator;
-import com.strategy.constantmodel.SoulIdEnum;
+import com.strategy.enummodel.SoulIdEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;

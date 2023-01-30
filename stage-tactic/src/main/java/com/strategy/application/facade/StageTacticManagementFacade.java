@@ -1,8 +1,19 @@
 package com.strategy.application.facade;
 
 
-import com.strategy.application.port.inbound.*;
-import com.strategy.application.port.inbound.inputdto.*;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulPutDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulSaveDto;
+import com.strategy.application.port.inbound.inputdto.stagedto.StagePutDto;
+import com.strategy.application.port.inbound.inputdto.stagedto.StageSaveDto;
+import com.strategy.application.port.inbound.inputdto.tacticdto.TacticPutDto;
+import com.strategy.application.port.inbound.portsoul.DeleteTacticSoulInboundPort;
+import com.strategy.application.port.inbound.portsoul.PutTacticSoulInboundPort;
+import com.strategy.application.port.inbound.portsoul.SaveTacticSoulInboundPort;
+import com.strategy.application.port.inbound.portstage.DeleteStageInboundPort;
+import com.strategy.application.port.inbound.portstage.PutStageInboundPort;
+import com.strategy.application.port.inbound.portstage.SaveStageInboundPort;
+import com.strategy.application.port.inbound.porttactic.DeleteTacticInboundPort;
+import com.strategy.application.port.inbound.porttactic.PutTacticInboundPort;
 import com.strategy.application.validator.SoulNameValidator;
 import org.springframework.stereotype.Service;
 

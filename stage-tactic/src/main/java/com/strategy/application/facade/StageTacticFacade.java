@@ -1,9 +1,9 @@
 package com.strategy.application.facade;
 
 
-import com.strategy.application.port.inbound.GetTacticInboundPort;
-import com.strategy.application.port.inbound.PostTacticInboundPort;
-import com.strategy.application.port.inbound.inputdto.TacticRequestDto;
+import com.strategy.application.port.inbound.porttactic.GetTacticInboundPort;
+import com.strategy.application.port.inbound.porttactic.PostTacticInboundPort;
+import com.strategy.application.port.inbound.inputdto.tacticdto.TacticRequestDto;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 import com.strategy.application.validator.*;
 import org.springframework.stereotype.Service;

@@ -2,9 +2,9 @@ package com.strategy.application.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.Tactic;
 import com.strategy.adpater.outbound.persistence.entity.TacticComment;
-import com.strategy.application.port.inbound.GetTacticCommentInboundPort;
-import com.strategy.application.port.inbound.PostTacticCommentInboundPort;
-import com.strategy.application.port.inbound.inputdto.TacticCommentRequestDto;
+import com.strategy.application.port.inbound.portcomment.GetTacticCommentInboundPort;
+import com.strategy.application.port.inbound.portcomment.PostTacticCommentInboundPort;
+import com.strategy.application.port.inbound.inputdto.commentdto.TacticCommentRequestDto;
 import com.strategy.application.port.inbound.outputdto.TacticCommentResponseDto;
 import com.strategy.application.port.outbound.TacticCommentOutboundPort;
 import com.strategy.application.port.outbound.TacticOutboundPort;

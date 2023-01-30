@@ -2,7 +2,7 @@ package com.strategy.adpater.inbound.presentation;
 
 
 import com.strategy.application.facade.StageTacticFacade;
-import com.strategy.application.port.inbound.inputdto.TacticRequestDto;
+import com.strategy.application.port.inbound.inputdto.tacticdto.TacticRequestDto;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

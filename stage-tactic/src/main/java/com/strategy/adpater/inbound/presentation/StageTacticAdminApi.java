@@ -2,7 +2,12 @@ package com.strategy.adpater.inbound.presentation;
 
 import com.strategy.application.facade.StageTacticFacade;
 import com.strategy.application.facade.StageTacticManagementFacade;
-import com.strategy.application.port.inbound.inputdto.*;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulPutDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulSaveDto;
+import com.strategy.application.port.inbound.inputdto.stagedto.StagePutDto;
+import com.strategy.application.port.inbound.inputdto.stagedto.StageSaveDto;
+import com.strategy.application.port.inbound.inputdto.tacticdto.TacticPutDto;
+import com.strategy.application.port.inbound.inputdto.tacticdto.TacticRequestDto;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

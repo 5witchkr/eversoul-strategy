@@ -1,7 +1,7 @@
 package com.strategy.application.validator;
 
 
-import com.strategy.constantmodel.SoulIdEnum;
+import com.strategy.enummodel.SoulIdEnum;
 import org.springframework.stereotype.Component;
 
 @Component

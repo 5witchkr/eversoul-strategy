@@ -1,8 +1,8 @@
 package com.strategy.application.validator;
 
 
-import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticRequestDto;
-import com.strategy.application.port.inbound.inputdto.SoulCharacterTacticValidReqDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulCharacterTacticRequestDto;
+import com.strategy.application.port.inbound.inputdto.souldto.SoulCharacterTacticValidReqDto;
 import com.strategy.constantmodel.SoulNameConstants;
 import org.springframework.stereotype.Component;
 

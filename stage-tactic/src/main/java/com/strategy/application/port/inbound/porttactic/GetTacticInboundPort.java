@@ -1,4 +1,4 @@
-package com.strategy.application.port.inbound;
+package com.strategy.application.port.inbound.porttactic;
 
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 
