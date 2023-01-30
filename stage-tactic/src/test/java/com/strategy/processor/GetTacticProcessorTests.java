@@ -7,7 +7,7 @@ import com.strategy.adpater.outbound.persistence.entity.TacticSoulcharacter;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 import com.strategy.application.port.inbound.outputdto.SoulCharacterTacticResponseDto;
 import com.strategy.application.port.outbound.StageOutboundPort;
-import com.strategy.application.processor.RecommendProcessor;
+import com.strategy.application.processor.GetTacticProcessor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -18,17 +18,17 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("RecommendProcessor Tests")
-public class RecommendProcessorTests {
+@DisplayName("GetTacticProcessor Tests")
+public class GetTacticProcessorTests {
 
     private StageOutboundPort stageOutboundPort;
-    private RecommendProcessor recommendProcessor;
+    private GetTacticProcessor getTacticProcessor;
 
     @TestFactory
-    @DisplayName("getRecommendWithoutBans Tests")
-    Stream<DynamicTest> getRecommendWithoutBans() {
+    @DisplayName("GetTacticWithoutBans Tests")
+    Stream<DynamicTest> getTacticWithoutBans() {
         stageOutboundPort = new TestStageOutboundPort();
-        recommendProcessor = new RecommendProcessor(stageOutboundPort);
+        getTacticProcessor = new GetTacticProcessor(stageOutboundPort);
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto1 = SoulCharacterTacticResponseDto.builder()
                 .name("메피").level(111).build();
         final SoulCharacterTacticResponseDto soulCharacterTacticResponseDto2 = SoulCharacterTacticResponseDto.builder()
@@ -62,7 +62,7 @@ public class RecommendProcessorTests {
                     final List<String> bans = List.of("플랑","아야메");
 
                     List<RecommendTacticResponseDto> result =
-                            recommendProcessor.getRecommendWithoutBans(location, step, bans);
+                            getTacticProcessor.getRecommendWithoutBans(location, step, bans);
 
                     assertThat(result.size()).isEqualTo(2);
                     assertThat(result.get(0)).isInstanceOf(RecommendTacticResponseDto.class);
@@ -74,7 +74,7 @@ public class RecommendProcessorTests {
                     final List<String> bans = List.of("아드리안","아야메");
 
                     List<RecommendTacticResponseDto> result =
-                            recommendProcessor.getRecommendWithoutBans(location, step, bans);
+                            getTacticProcessor.getRecommendWithoutBans(location, step, bans);
 
                     assertThat(result.size()).isEqualTo(1);
                     assertThat(result.get(0)).isInstanceOf(RecommendTacticResponseDto.class);
@@ -86,7 +86,7 @@ public class RecommendProcessorTests {
                     final List<String> bans = List.of("아드리안","아야메","메피","지호","미리암","나이아");
 
                     List<RecommendTacticResponseDto> result =
-                            recommendProcessor.getRecommendWithoutBans(location, step, bans);
+                            getTacticProcessor.getRecommendWithoutBans(location, step, bans);
 
                     assertThat(result.size()).isEqualTo(0);
                 })

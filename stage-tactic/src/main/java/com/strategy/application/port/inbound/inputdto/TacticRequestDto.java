@@ -22,6 +22,10 @@ public class TacticRequestDto {
     private int step;
 
     @NotBlank
+    @Size(min = 1, max = 25)
+    private String title;
+
+    @NotBlank
     @Size(min = 1, max = 30)
     private String position;
 

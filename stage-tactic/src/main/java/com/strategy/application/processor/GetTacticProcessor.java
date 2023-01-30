@@ -3,22 +3,23 @@ package com.strategy.application.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.Tactic;
 import com.strategy.adpater.outbound.persistence.entity.TacticCharacter;
-import com.strategy.application.port.inbound.GetRecommendInboundProt;
+import com.strategy.application.port.inbound.GetTacticInboundPort;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
 import com.strategy.application.port.inbound.outputdto.SoulCharacterTacticResponseDto;
 import com.strategy.application.port.outbound.StageOutboundPort;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
-public class RecommendProcessor implements GetRecommendInboundProt {
+public class GetTacticProcessor implements GetTacticInboundPort {
 
     private final StageOutboundPort stageOutboundPort;
 
-    public RecommendProcessor(StageOutboundPort stageOutboundPort) {
+    public GetTacticProcessor(StageOutboundPort stageOutboundPort) {
         this.stageOutboundPort = stageOutboundPort;
     }
 
@@ -31,6 +32,7 @@ public class RecommendProcessor implements GetRecommendInboundProt {
                 .getTactics().stream()
                 .map(this::tacticToRecommendTacticResponseDto)
                 .filter(value -> !checkBans.check(value.getSoulCharacterTacticResponseDtos(),bans))
+                .sorted(Comparator.comparingInt(RecommendTacticResponseDto::getRecommendCount).reversed())
                 .collect(Collectors.toList());
     }
 
@@ -42,8 +44,10 @@ public class RecommendProcessor implements GetRecommendInboundProt {
                 recommendTacticResponseDto = RecommendTacticResponseDto.builder();
         recommendTacticResponseDto.tacticId(tactic.getId());
         recommendTacticResponseDto.position(tactic.getPosition());
+        recommendTacticResponseDto.title(tactic.getTitle());
         recommendTacticResponseDto.power(tactic.getPower());
         recommendTacticResponseDto.info(tactic.getInfo());
+        recommendTacticResponseDto.recommendCount(tactic.getRecommendCount());
         recommendTacticResponseDto.soulCharacterTacticResponseDtos(
                 tacticCharactersToResponseDtos(tactic.getTacticCharacters()));
         return recommendTacticResponseDto.build();

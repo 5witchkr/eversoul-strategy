@@ -4,7 +4,7 @@ import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDt
 
 import java.util.List;
 
-public interface GetRecommendInboundProt {
+public interface GetTacticInboundPort {
 
     List<RecommendTacticResponseDto> getRecommendWithoutBans(int location, int step, List<String> bans);
 }

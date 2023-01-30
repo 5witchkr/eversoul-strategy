@@ -13,7 +13,7 @@ public class LevelValidator {
 
     public void checkLevelByDtos(List<SoulCharacterTacticValidReqDto> soulCharacters) {
         long failValueCount = soulCharacters.stream()
-                .filter(value -> 1 > value.getLevel() || value.getLevel() > 2000)
+                .filter(value -> 0 > value.getLevel() || value.getLevel() > 2000)
                 .count();
         if (failValueCount > 0) throw new IllegalArgumentException("유효하지 않은 레벨");
     }

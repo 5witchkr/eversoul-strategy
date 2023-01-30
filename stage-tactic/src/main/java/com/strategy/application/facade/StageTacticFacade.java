@@ -1,7 +1,7 @@
 package com.strategy.application.facade;
 
 
-import com.strategy.application.port.inbound.GetRecommendInboundProt;
+import com.strategy.application.port.inbound.GetTacticInboundPort;
 import com.strategy.application.port.inbound.PostTacticInboundPort;
 import com.strategy.application.port.inbound.inputdto.TacticRequestDto;
 import com.strategy.application.port.inbound.outputdto.RecommendTacticResponseDto;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class StageTacticFacade {
 
-    private final GetRecommendInboundProt getRecommendInboundProt;
+    private final GetTacticInboundPort getTacticInboundPort;
     private final PostTacticInboundPort postTacticInboundPort;
     private final BanSoulsValidator banSoulsValidator;
     private final StageParamValidator stageParamValidator;
@@ -26,7 +26,7 @@ public class StageTacticFacade {
 
 
 
-    public StageTacticFacade(GetRecommendInboundProt getRecommendInboundProt,
+    public StageTacticFacade(GetTacticInboundPort getTacticInboundPort,
                              PostTacticInboundPort postTacticInboundPort,
                              BanSoulsValidator banSoulsValidator,
                              StageParamValidator stageParamValidator,
@@ -35,7 +35,7 @@ public class StageTacticFacade {
                              PositionValidator positionValidator,
                              PowerValidator powerValidator,
                              SoulNameValidator soulNameValidator, TacticSoulIdValidator tacticSoulIdValidator) {
-        this.getRecommendInboundProt = getRecommendInboundProt;
+        this.getTacticInboundPort = getTacticInboundPort;
         this.postTacticInboundPort = postTacticInboundPort;
         this.banSoulsValidator = banSoulsValidator;
         this.stageParamValidator = stageParamValidator;
@@ -51,7 +51,7 @@ public class StageTacticFacade {
         stageParamValidator.checkLocation(location);
         stageParamValidator.checkStep(step);
         List<String> filteredBans = banSoulsValidator.filterBanSouls(bans);
-        return getRecommendInboundProt.getRecommendWithoutBans(location ,step ,filteredBans);
+        return getTacticInboundPort.getRecommendWithoutBans(location ,step ,filteredBans);
     }
 
     public void postTactic(TacticRequestDto tacticRequestDto){
