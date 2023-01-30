@@ -44,7 +44,8 @@ public class Tactic {
     private List<TacticComment> tacticComments = new ArrayList<>();
 
     @Builder
-    public Tactic(String position, int power, String info, String title, Stage stage, List<TacticCharacter> tacticCharacters) {
+    public Tactic(Long id, String position, int power, String info, String title, Stage stage, List<TacticCharacter> tacticCharacters) {
+        this.id = id;
         this.position = position;
         this.power = power;
         this.title = title;
