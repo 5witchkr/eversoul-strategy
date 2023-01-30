@@ -36,7 +36,7 @@ public class LevelValidatorTests {
     @DisplayName("checkLevelByDtos Fail Tests")
     Stream<DynamicTest> checkLevelByDtosFail() {
         levelValidator = new LevelValidator();
-        final SoulCharacterTacticValidReqDto dto1 = SoulCharacterTacticValidReqDto.builder().soulId(1L).level(0).build();
+        final SoulCharacterTacticValidReqDto dto1 = SoulCharacterTacticValidReqDto.builder().soulId(1L).level(-199).build();
         final SoulCharacterTacticValidReqDto dto2 = SoulCharacterTacticValidReqDto.builder().soulId(2L).level(2002).build();
         final SoulCharacterTacticValidReqDto dto3 = SoulCharacterTacticValidReqDto.builder().soulId(5L).level(-1).build();
         final List<SoulCharacterTacticValidReqDto> value1 = List.of(dto1);
