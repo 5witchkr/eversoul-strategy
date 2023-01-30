@@ -25,6 +25,13 @@ public class Tactic {
     @Column
     private String info = "";
 
+    @Column
+    private String title;
+
+
+    @Column
+    private int recommendCount = 0;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stage_id", referencedColumnName = "id")
     private Stage stage;
@@ -36,15 +43,11 @@ public class Tactic {
     @OneToMany(mappedBy = "tactic", cascade = CascadeType.ALL)
     private List<TacticComment> tacticComments = new ArrayList<>();
 
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "tacticRecommend_id", referencedColumnName = "id")
-    private TacticRecommend tacticRecommend = new TacticRecommend();
-
     @Builder
-    public Tactic(String position, int power, String info, Stage stage, List<TacticCharacter> tacticCharacters) {
+    public Tactic(String position, int power, String info, String title, Stage stage, List<TacticCharacter> tacticCharacters) {
         this.position = position;
         this.power = power;
+        this.title = title;
         this.info = info;
         this.stage = stage;
         this.tacticCharacters = tacticCharacters;
