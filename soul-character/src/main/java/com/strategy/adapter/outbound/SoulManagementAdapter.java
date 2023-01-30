@@ -17,8 +17,8 @@ public class SoulManagementAdapter implements SoulManagementOutboundPort {
     }
 
     @Override
-    public void save(SoulCharacter soulCharacter) {
-        soulCharacterRepository.save(soulCharacter);
+    public SoulCharacter save(SoulCharacter soulCharacter) {
+        return soulCharacterRepository.save(soulCharacter);
     }
 
     @Override

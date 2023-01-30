@@ -4,6 +4,7 @@ package com.strategy.application.facade;
 import com.strategy.application.port.inbound.portrecommend.TacticRecommendCheckInboundPort;
 import com.strategy.application.port.inbound.portrecommend.TacticRecommendInboundPort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
@@ -18,6 +19,7 @@ public class TacticRecommendFacade {
         this.tacticRecommendCheckInboundPort = tacticRecommendCheckInboundPort;
     }
 
+    @Transactional
     public void postRecommend(Long tacticId, String userIp) {
         if (!tacticRecommendCheckInboundPort
                 .checkExistIpAtTacticId(String.valueOf(tacticId), userIp, LocalDate.now().toString())){

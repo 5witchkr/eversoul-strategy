@@ -26,7 +26,7 @@ public class TacticSoulManagementProcessor implements SaveTacticSoulInboundPort,
     @Override
     public void putSoul(SoulPutDto soulPutDto) {
         TacticSoulcharacter tacticSoulcharacter = tacticSoulcharacterOutboundPort.findById(soulPutDto.getId())
-                .orElseThrow(() -> new NullPointerException("유효하지 보은 정보"));
+                .orElseThrow(() -> new NullPointerException("유효하지 않은 정령 정보"));
         tacticSoulcharacter.setName(soulPutDto.getName());
         tacticSoulcharacter.setTier(soulPutDto.getTier());
         tacticSoulcharacter.setType(soulPutDto.getType());
