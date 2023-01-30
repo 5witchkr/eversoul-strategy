@@ -42,6 +42,7 @@ public class TacticPostProcessor implements PostTacticInboundPort {
         Tactic tactic = tacticOutboundPort.save(Tactic.builder()
                 .stage(getByLocationAndStep(tacticRequestDto.getLocation(), tacticRequestDto.getStep()))
                 .info(tacticRequestDto.getInfo())
+                .title(tacticRequestDto.getTitle())
                 .position(tacticRequestDto.getPosition())
                 .power(tacticRequestDto.getPower())
                 .build());
