@@ -5,7 +5,6 @@ import com.strategy.application.port.inbound.portrecommend.TacticRecommendInboun
 import com.strategy.application.port.outbound.TacticOutboundPort;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 
 @Component
 public class TacticRecommendCountProcessor implements TacticRecommendInboundPort {
@@ -18,7 +17,6 @@ public class TacticRecommendCountProcessor implements TacticRecommendInboundPort
     }
 
     @Override
-    @Transactional
     public void addRecommend(Long tacticId) {
         try {
             Tactic tactic = tacticOutboundPort.getReferenceById(tacticId);
