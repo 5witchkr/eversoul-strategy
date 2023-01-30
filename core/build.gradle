@@ -8,6 +8,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
+    //redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
     implementation project(':stage-tactic')
     implementation project(':story-answer')
     implementation project(':soul-character')
