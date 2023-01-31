@@ -1,4 +1,4 @@
-insert into story_soulcharacter (name, tier, type)
+insert into tactic_soulcharacter (name, tier, type)
 values
 ('아드리안','SSS','천사'),
 ('캐서린', 'SSS', '인간'),
