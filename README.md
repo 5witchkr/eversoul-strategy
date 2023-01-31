@@ -13,16 +13,13 @@ spring security (protect xss
 
 jacoco (test coverage:
 
-
+soulcharacter change event pub -> event sub tactic-soul, answer-soul 
 
 project-module { core, soul-character, stage-tactic, story-answer, util}
 
 
 
-todo//
-soulcharacter change event pub-> redis queue -> event sub tactic-soul, answer-soul 
+todo spring batch) used soul count, used position count, combination soul
 
-todo//
-encrypt data input -> scala fun -> output
 
 
