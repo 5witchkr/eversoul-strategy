@@ -40,4 +40,14 @@ public class BatchOnDemandApi {
 
         return "O";
     }
+
+    @PostMapping("/soulconnect")
+    public String postSoulConnect(@RequestParam String devValue) {
+
+        if (!devValue.equals(value)) return "X";
+
+        batchFacade.soulConnectBatch();
+
+        return "O";
+    }
 }
