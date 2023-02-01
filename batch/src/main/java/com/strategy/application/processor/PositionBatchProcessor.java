@@ -2,7 +2,7 @@ package com.strategy.application.processor;
 
 
 import com.strategy.application.batch.PositionJobConfig;
-import com.strategy.application.port.inbound.PositionBatchInboundPort;
+import com.strategy.application.port.inbound.portbatch.PositionBatchInboundPort;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
