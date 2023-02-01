@@ -1,7 +1,7 @@
 package com.strategy.application.processor;
 
 import com.strategy.adapter.outbound.persistence.StatisticSoulselect;
-import com.strategy.application.port.inbound.StatisticSoulSelectInboundPort;
+import com.strategy.application.port.inbound.portbatch.StatisticSoulSelectInboundPort;
 import com.strategy.application.port.outbound.StatisticSoulSelectOutboundPort;
 import com.strategy.application.port.outbound.TacticCharacterOutboundPort;
 import org.springframework.stereotype.Component;
