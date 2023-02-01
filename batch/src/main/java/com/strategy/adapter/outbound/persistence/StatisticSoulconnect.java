@@ -1,4 +1,4 @@
-package com.strategy;
+package com.strategy.adapter.outbound.persistence;
 
 import javax.persistence.*;
 
