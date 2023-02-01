@@ -5,6 +5,8 @@ import com.strategy.adapter.outbound.persistence.StatisticPositionRepository;
 import com.strategy.application.port.outbound.StatisticPositionOutboundPort;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 public class StatisticPositionAdapter implements StatisticPositionOutboundPort {
@@ -24,5 +26,10 @@ public class StatisticPositionAdapter implements StatisticPositionOutboundPort {
     @Override
     public void save(StatisticPosition statisticPosition) {
         statisticPositionRepository.save(statisticPosition);
+    }
+
+    @Override
+    public List<StatisticPosition> findAll() {
+        return statisticPositionRepository.findAll();
     }
 }
