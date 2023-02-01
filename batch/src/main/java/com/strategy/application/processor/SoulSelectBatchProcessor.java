@@ -36,10 +36,12 @@ public class SoulSelectBatchProcessor implements SoulSelectBatchInboundPort {
         simpleJob.setName("statisticSoulJob");
         simpleJob.setJobRepository(jobRepository);
 
-        String addedCountAndDate = addedCount + "," + LocalDate.now();
+        if (addedCount == 0) return;
+
+        String addedCountJobAndDate = addedCount + "," + "SoulSelect" + LocalDate.now();
 
         JobParameters jobParameters = new JobParametersBuilder()
-                .addString("addedCountAndDate",addedCountAndDate)
+                .addString("addedCountJobAndDate",addedCountJobAndDate)
                 .toJobParameters();
 
         List<Step> stepsToExecute = new ArrayList<>();
