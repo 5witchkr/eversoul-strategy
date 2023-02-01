@@ -2,7 +2,7 @@ package com.strategy.application.processor;
 
 
 import com.strategy.adapter.outbound.persistence.SoulconnectBatchdata;
-import com.strategy.application.port.inbound.StatisticSoulConnectInboundPort;
+import com.strategy.application.port.inbound.portbatch.StatisticSoulConnectInboundPort;
 import com.strategy.application.port.outbound.SoulconnectBatchdataOutboundPort;
 import com.strategy.application.port.outbound.TacticCharacterOutboundPort;
 import org.springframework.stereotype.Component;
