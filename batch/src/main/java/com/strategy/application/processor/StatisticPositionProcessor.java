@@ -2,7 +2,7 @@ package com.strategy.application.processor;
 
 
 import com.strategy.adapter.outbound.persistence.StatisticPosition;
-import com.strategy.application.port.inbound.StatisticPositionInboundPort;
+import com.strategy.application.port.inbound.portbatch.StatisticPositionInboundPort;
 import com.strategy.application.port.outbound.StatisticPositionOutboundPort;
 import com.strategy.application.port.outbound.TacticOutboundPort;
 import org.springframework.stereotype.Component;
