@@ -26,4 +26,9 @@ public class TacticCharacterAdapter implements TacticCharacterOutboundPort {
     public List<TacticCharacter> saveAll(List<TacticCharacter> tacticCharacters) {
         return tacticCharacterRepository.saveAll(tacticCharacters);
     }
+
+    @Override
+    public Long countAll() {
+        return tacticCharacterRepository.count();
+    }
 }
