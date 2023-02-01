@@ -62,9 +62,9 @@ public class SoulSelectJobConfig {
     @Bean
     @StepScope
     public JpaPagingItemReader<TacticCharacter> tacticCharacterSoulIdReader(
-            @Value("#{jobParameters[addedCountAndDate]}") String addedCountAndDate) {
+            @Value("#{jobParameters[addedCountJobAndDate]}") String addedCountJobAndDate) {
 
-        int addedCount = Integer.parseInt(addedCountAndDate.split(",")[0]);
+        int addedCount = Integer.parseInt(addedCountJobAndDate.split(",")[0]);
 
         return new JpaPagingItemReaderBuilder<TacticCharacter>()
                 .name("JpaPagingItemReader")
