@@ -1,7 +1,7 @@
 package com.strategy.application.processor;
 
 import com.strategy.application.batch.SoulSelectJobConfig;
-import com.strategy.application.port.inbound.SoulSelectBatchInboundPort;
+import com.strategy.application.port.inbound.portbatch.SoulSelectBatchInboundPort;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
