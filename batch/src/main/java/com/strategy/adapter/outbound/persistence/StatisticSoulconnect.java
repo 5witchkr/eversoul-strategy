@@ -1,8 +1,15 @@
 package com.strategy.adapter.outbound.persistence;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class StatisticSoulconnect {
     @Id
@@ -17,4 +24,8 @@ public class StatisticSoulconnect {
 
     @Column
     private int connectCount;
+
+    public void addCount() {
+        this.connectCount++;
+    }
 }
