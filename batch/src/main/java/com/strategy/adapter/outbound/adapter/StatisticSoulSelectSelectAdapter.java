@@ -5,6 +5,8 @@ import com.strategy.adapter.outbound.persistence.StatisticSoulselect;
 import com.strategy.application.port.outbound.StatisticSoulSelectOutboundPort;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 public class StatisticSoulSelectSelectAdapter implements StatisticSoulSelectOutboundPort {
@@ -23,5 +25,10 @@ public class StatisticSoulSelectSelectAdapter implements StatisticSoulSelectOutb
     @Override
     public void save(StatisticSoulselect statisticSoulselect) {
         statisticSoulSelectRepository.save(statisticSoulselect);
+    }
+
+    @Override
+    public List<StatisticSoulselect> findAll() {
+        return statisticSoulSelectRepository.findAll();
     }
 }
