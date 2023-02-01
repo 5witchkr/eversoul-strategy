@@ -62,9 +62,9 @@ public class PositionJobConfig {
     @Bean
     @StepScope
     public JpaPagingItemReader<String> positionReader(
-            @Value("#{jobParameters[addedCountAndDate]}") String addedCountAndDate) {
+            @Value("#{jobParameters[addedCountJobAndDate]}") String addedCountJobAndDate) {
 
-        int addedCount = Integer.parseInt(addedCountAndDate.split(",")[0]);
+        int addedCount = Integer.parseInt(addedCountJobAndDate.split(",")[0]);
 
         return new JpaPagingItemReaderBuilder<String>()
                 .name("positionReader")
@@ -97,14 +97,14 @@ public class PositionJobConfig {
             if (position.equals(TacticPositionEnum.POSITION_1.getValue())){
                 statisticPosition = statisticPositionRepository.getReferenceById(1L);
             }
-            if (position.equals(TacticPositionEnum.POSITION_1.getValue())){
-                 statisticPosition = statisticPositionRepository.getReferenceById(1L);
+            if (position.equals(TacticPositionEnum.POSITION_2.getValue())){
+                 statisticPosition = statisticPositionRepository.getReferenceById(2L);
             }
-            if (position.equals(TacticPositionEnum.POSITION_1.getValue())){
-                 statisticPosition = statisticPositionRepository.getReferenceById(1L);
+            if (position.equals(TacticPositionEnum.POSITION_3.getValue())){
+                 statisticPosition = statisticPositionRepository.getReferenceById(3L);
             }
-            if (position.equals(TacticPositionEnum.POSITION_1.getValue())){
-                 statisticPosition = statisticPositionRepository.getReferenceById(1L);
+            if (position.equals(TacticPositionEnum.POSITION_4.getValue())){
+                 statisticPosition = statisticPositionRepository.getReferenceById(4L);
             }
 
             assert statisticPosition != null;
