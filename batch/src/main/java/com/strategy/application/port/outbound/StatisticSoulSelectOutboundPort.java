@@ -4,7 +4,7 @@ import com.strategy.adapter.outbound.persistence.StatisticSoulselect;
 
 public interface StatisticSoulSelectOutboundPort {
 
-    StatisticSoulselect getReferenceById(Long l);
+    StatisticSoulselect getReferenceById(Long id);
 
     void save(StatisticSoulselect statisticSoulselect);
 }
