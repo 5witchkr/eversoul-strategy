@@ -23,6 +23,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 
-    //todo refactor
+    //todo refactor 모든 모듈의 outbound persistence 를 persistence 모듈로 분리
     implementation project(':stage-tactic')
+    implementation project(':util-module')
 }
