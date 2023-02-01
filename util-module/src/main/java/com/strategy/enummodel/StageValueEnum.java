@@ -3,7 +3,7 @@ package com.strategy.enummodel;
 public enum StageValueEnum {
 
     LOCATION_MIN(1),
-    LOCATION_MAX(15),
+    LOCATION_MAX(16),
     STEP_MIN(1),
     STEP_MAX(45);
 

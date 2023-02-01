@@ -2,7 +2,7 @@ package com.strategy.enummodel;
 
 public enum SoulIdEnum {
     SOUL_ID_START(1L),
-    SOUL_ID_END(31L);
+    SOUL_ID_END(32L);
 
     private final Long value;
 

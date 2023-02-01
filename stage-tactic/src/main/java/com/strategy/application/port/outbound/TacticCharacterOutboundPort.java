@@ -9,4 +9,6 @@ public interface TacticCharacterOutboundPort {
     TacticCharacter save(TacticCharacter tacticCharacter);
 
     List<TacticCharacter> saveAll(List<TacticCharacter> tacticCharacters);
+
+    Long countAll();
 }

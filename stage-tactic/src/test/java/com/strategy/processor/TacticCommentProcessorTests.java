@@ -87,6 +87,11 @@ public class TacticCommentProcessorTests {
         public Tactic getReferenceById(Long tacticId) {
             return null;
         }
+
+        @Override
+        public Long countAll() {
+            return null;
+        }
     }
 
     private static class TestTacticCommentOutboundPort implements TacticCommentOutboundPort{

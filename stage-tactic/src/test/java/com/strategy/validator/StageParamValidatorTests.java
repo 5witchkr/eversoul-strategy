@@ -2,6 +2,7 @@ package com.strategy.validator;
 
 
 import com.strategy.application.validator.StageParamValidator;
+import com.strategy.enummodel.StageValueEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -23,7 +24,7 @@ public class StageParamValidatorTests {
     @DisplayName("checkLocation Success Tests")
     Stream<DynamicTest> checkLocationSuccess() {
         stageParamValidator = new StageParamValidator();
-        final List<Integer> valueSource = IntStream.rangeClosed(1,15)
+        final List<Integer> valueSource = IntStream.rangeClosed(StageValueEnum.LOCATION_MIN.getValue(), StageValueEnum.LOCATION_MAX.getValue())
                 .boxed()
                 .collect(Collectors.toList());
 
@@ -36,7 +37,8 @@ public class StageParamValidatorTests {
     @DisplayName("checkLocation Fail Tests")
     Stream<DynamicTest> checkLocationFail() {
         stageParamValidator = new StageParamValidator();
-        final List<Integer> source1 = IntStream.rangeClosed(16,30)
+        final List<Integer> source1 = IntStream.rangeClosed(
+                StageValueEnum.LOCATION_MAX.getValue()+1, StageValueEnum.LOCATION_MAX.getValue()+20)
                 .boxed()
                 .collect(Collectors.toList());
         final List<Integer> source2 = List.of(0, -1, -10, 500);
@@ -56,7 +58,8 @@ public class StageParamValidatorTests {
     @DisplayName("checkStep Success Tests")
     Stream<DynamicTest> checkStepSuccess() {
         stageParamValidator = new StageParamValidator();
-        final List<Integer> valueSource = IntStream.rangeClosed(1,45)
+        final List<Integer> valueSource = IntStream.rangeClosed(
+                StageValueEnum.STEP_MIN.getValue(),StageValueEnum.STEP_MAX.getValue())
                 .boxed()
                 .collect(Collectors.toList());
 
@@ -69,7 +72,8 @@ public class StageParamValidatorTests {
     @DisplayName("checkStep Fail Tests")
     Stream<DynamicTest> checkStepFail() {
         stageParamValidator = new StageParamValidator();
-        final List<Integer> source1 = IntStream.rangeClosed(51,60)
+        final List<Integer> source1 = IntStream.rangeClosed(
+                StageValueEnum.STEP_MAX.getValue()+1,StageValueEnum.STEP_MAX.getValue()+20)
                 .boxed()
                 .collect(Collectors.toList());
         final List<Integer> source2 = List.of(0, 500, -1, -10);
