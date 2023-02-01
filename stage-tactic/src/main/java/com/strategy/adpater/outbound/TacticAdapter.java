@@ -41,4 +41,9 @@ public class TacticAdapter implements TacticOutboundPort {
     public Tactic getReferenceById(Long tacticId) {
         return tacticRepository.getReferenceById(tacticId);
     }
+
+    @Override
+    public Long countAll() {
+        return tacticRepository.count();
+    }
 }
