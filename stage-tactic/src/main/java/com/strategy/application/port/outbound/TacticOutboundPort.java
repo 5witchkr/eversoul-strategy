@@ -20,4 +20,6 @@ public interface TacticOutboundPort {
     Optional<Tactic> findById(Long tacticId);
 
     Tactic getReferenceById(Long tacticId);
+
+    Long countAll();
 }
