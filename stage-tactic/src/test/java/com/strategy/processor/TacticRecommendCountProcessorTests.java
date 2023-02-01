@@ -67,5 +67,10 @@ public class TacticRecommendCountProcessorTests {
             }
             return null;
         }
+
+        @Override
+        public Long countAll() {
+            return null;
+        }
     }
 }
