@@ -2,7 +2,7 @@ package com.strategy.application.processor;
 
 
 import com.strategy.application.batch.SoulConnectJobConfig;
-import com.strategy.application.port.inbound.SoulConnectBatchInboundPort;
+import com.strategy.application.port.inbound.portbatch.SoulConnectBatchInboundPort;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
