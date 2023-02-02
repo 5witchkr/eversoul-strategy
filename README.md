@@ -29,3 +29,4 @@ project architecture
 
 
 project link
+https://eversoul.pages.dev
