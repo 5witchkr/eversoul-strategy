@@ -49,7 +49,7 @@ I applied hexagonal architecture and loosened the dependencies
     enum-model, const-model, event-model
     
   }
-  The event-driven model was applied to break the dependency between modules.
+  The dependencies between modules were reduced by applying an event-driven model.
   ```
 
 
