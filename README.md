@@ -27,6 +27,9 @@ hexagonal architecture & multi module project
 ![esproject-architecture drawio](https://user-images.githubusercontent.com/95848796/216316351-6f213c6f-2966-4239-8266-f3f6fca9aedc.png)
 
 
+## project ERD
+
+
 
 ## project deploy
   - project link
@@ -35,6 +38,7 @@ hexagonal architecture & multi module project
     - framework: spring boot
     - infra: aws ec2
     - database: mysql aws rds
-  - front-end : svelte
+  - front-end
+    - framework: svelte
     - infra: cloudflare
 
