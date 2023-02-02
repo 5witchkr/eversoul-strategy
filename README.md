@@ -14,8 +14,6 @@ hexagonal architecture & multi module project
 
 # project info
   ```
-  multi module project
-  
   project-module { 
     core: springboot config, component scan
     soul-character: soul-caharacter domain business logic & inbound adapter, outboud adapter
@@ -24,7 +22,9 @@ hexagonal architecture & multi module project
     batch: spring batch on-demand, statistic domain business logic & inbound adapter, outboud adapter
     util: enum-model, const-model, event-model
   }
-  soulcharacter change event pub -> event sub tactic-soul, answer-soul 
+  
+  soul-character change event pub -> event sub tactic-soul, answer-soul 
+  
   ```
 
 
