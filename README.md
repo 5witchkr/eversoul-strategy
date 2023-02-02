@@ -64,6 +64,8 @@ hexagonal architecture & multi module project
 ## project deploy
   - project link
     - https://eversoul.pages.dev
+  - backend restdocs
+    - https://api.eversoul.site/docs
   - back-end
     - framework: spring boot
     - infra: aws ec2
