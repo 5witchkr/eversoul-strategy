@@ -15,16 +15,28 @@ hexagonal architecture & multi module project
 # project info
   ```
   project-module { 
-    core: springboot config, component scan
-    soul-character: soul-caharacter domain business logic & inbound adapter, outboud adapter
-    stage-tactic: stage-tactic domain business logic & inbound adapter, outboud adapter
-    story-answer: story-answer domain business logic & inbound adapter, outboud adapter
-    batch: spring batch on-demand, statistic domain business logic & inbound adapter, outboud adapter
-    util: enum-model, const-model, event-model
+  
+    core: springboot 
+    config, component scan
+    
+    soul-character: 
+    soul-caharacter domain business logic & inbound adapter, outboud adapter
+    
+    stage-tactic: 
+    stage-tactic domain business logic & inbound adapter, outboud adapter
+    
+    story-answer: 
+    story-answer domain business logic & inbound adapter, outboud adapter
+    
+    batch: 
+    spring batch on-demand, statistic domain business logic & inbound adapter, outboud adapter
+    
+    util: 
+    enum-model, const-model, event-model
+    
   }
   
   soul-character change event pub -> event sub tactic-soul, answer-soul 
-  
   ```
 
 
