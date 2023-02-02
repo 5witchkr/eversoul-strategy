@@ -1,4 +1,4 @@
-package com.strategy.application.processor.pubish;
+package com.strategy.application.processor.publish;
 
 import com.strategy.application.port.inbound.SoulPubEventInboundPort;
 import com.strategy.application.port.inbound.inputdto.SoulPutRequestDto;
