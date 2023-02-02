@@ -16,8 +16,8 @@ hexagonal architecture & multi module project
   ```
   project-module { 
   
-    core: springboot 
-    config, component scan
+    core: 
+    springboot config, component scan
     
     soul-character: 
     soul-caharacter domain business logic & inbound adapter, outboud adapter
