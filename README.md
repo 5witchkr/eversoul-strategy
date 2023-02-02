@@ -14,8 +14,17 @@ hexagonal architecture & multi module project
 
 # project info
   ```
+  multi module project
+  
+  project-module { 
+    core: springboot 
+    soul-character,
+    stage-tactic,
+    story-answer,
+    batch,
+    util
+  }
   soulcharacter change event pub -> event sub tactic-soul, answer-soul 
-  project-module { core, soul-character, stage-tactic, story-answer, batch, util}
   ```
 
 
@@ -28,6 +37,7 @@ hexagonal architecture & multi module project
 
 
 ## project ERD
+![eversoul-strategy](https://user-images.githubusercontent.com/95848796/216323175-946efe3e-728c-4d90-abb9-849c55e289a1.png)
 
 
 
