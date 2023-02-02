@@ -10,8 +10,12 @@ hexagonal architecture & multi module project
   - spring batch
   - spring security
   - spring data redis
+  - spring restdocs
   - jacoco
-  - asserj
+  - assertj
+  - mokito
+
+---
 
 # project info
   ```
@@ -41,28 +45,33 @@ hexagonal architecture & multi module project
   ```
 
 
-  - back-end : spring boot
-  - front-end : svelte
+---
 
 ## project architecture
 
 ![esproject-architecture drawio](https://user-images.githubusercontent.com/95848796/216316351-6f213c6f-2966-4239-8266-f3f6fca9aedc.png)
 
 
+---
+
+
 ## project ERD
 ![eversoul-strategy](https://user-images.githubusercontent.com/95848796/216323175-946efe3e-728c-4d90-abb9-849c55e289a1.png)
 
 
+---
 
 ## project deploy
   - project link
     - https://eversoul.pages.dev
   - back-end
     - framework: spring boot
-    - infra: aws ec2
-    - database: mysql aws rds
+    - infra: aws ec2 + nginx
+    - database: mysql (aws rds)
   - front-end
-    - framework: svelte
+    - framework: svelteKit
     - infra: cloudflare
     - project repository: https://github.com/5witchkr/eversoul
 
+
+---
