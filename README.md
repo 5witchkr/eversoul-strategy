@@ -66,8 +66,13 @@ hexagonal architecture & multi module project
     - https://eversoul.pages.dev
   - back-end
     - framework: spring boot
-    - infra: aws ec2 + nginx
-    - database: mysql (aws rds)
+    - infra: aws ec2
+      - nginx
+      - docker network
+        - spring container
+        - redis container
+    - database: aws rds
+      - mysql
   - front-end
     - framework: svelteKit
     - infra: cloudflare
