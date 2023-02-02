@@ -63,4 +63,5 @@ hexagonal architecture & multi module project
   - front-end
     - framework: svelte
     - infra: cloudflare
+    - project repository: https://github.com/5witchkr/eversoul
 
