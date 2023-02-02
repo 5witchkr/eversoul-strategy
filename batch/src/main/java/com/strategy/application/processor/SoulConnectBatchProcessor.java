@@ -47,7 +47,8 @@ public class SoulConnectBatchProcessor implements SoulConnectBatchInboundPort {
         List<Step> stepsToExecute = new ArrayList<>();
 
         try {
-            stepsToExecute.add(soulConnectJobConfig.soulConnectStep());
+            stepsToExecute.add(soulConnectJobConfig.soulConnectStep1());
+            stepsToExecute.add(soulConnectJobConfig.soulConnectStep2());
             simpleJob.setSteps(stepsToExecute);
             jobLauncher.run(simpleJob, jobParameters);
         } catch (Exception e) {
