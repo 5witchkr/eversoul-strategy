@@ -2,7 +2,7 @@ package com.strategy.application.batch;
 
 
 import com.strategy.adapter.outbound.persistence.SoulconnectBatchdata;
-import com.strategy.adapter.outbound.persistence.StatisticSoulConnectRepository;
+import com.strategy.adapter.outbound.persistence.SoulconnectBatchdataRepository;
 import com.strategy.adpater.outbound.persistence.entity.TacticCharacter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -29,37 +29,43 @@ public class SoulConnectJobConfig {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
     private final EntityManagerFactory entityManagerFactory;
-    private final StatisticSoulConnectRepository statisticSoulConnectRepository;
+    private final SoulconnectBatchdataRepository soulconnectBatchdataRepository;
 
-    public SoulConnectJobConfig(JobBuilderFactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory, EntityManagerFactory entityManagerFactory, StatisticSoulConnectRepository statisticSoulConnectRepository) {
+    public SoulConnectJobConfig(JobBuilderFactory jobBuilderFactory,
+                                StepBuilderFactory stepBuilderFactory,
+                                EntityManagerFactory entityManagerFactory,
+                                SoulconnectBatchdataRepository soulconnectBatchdataRepository) {
         this.jobBuilderFactory = jobBuilderFactory;
         this.stepBuilderFactory = stepBuilderFactory;
         this.entityManagerFactory = entityManagerFactory;
-        this.statisticSoulConnectRepository = statisticSoulConnectRepository;
+        this.soulconnectBatchdataRepository = soulconnectBatchdataRepository;
     }
 
 
     @Bean
     public Job statisticConnectJob() throws Exception {
         return jobBuilderFactory.get("statisticConnectJob")
-                .start(soulConnectStep())
+                .start(soulConnectStep1())
+                .next(soulConnectStep2())
                 .build();
     }
 
+
+
     @Bean
     @JobScope
-    public Step soulConnectStep() throws Exception {
-        return stepBuilderFactory.get("soulConnectStep")
+    public Step soulConnectStep1() throws Exception {
+        return stepBuilderFactory.get("soulConnectStep1")
                 .<TacticCharacter, SoulconnectBatchdata>chunk(10)
-                .reader(soulConnectTacticCharacterReader(null))
-                .processor(soulConnectTacticCharacterProcessor())
-                .writer(soulConnectTacticCharacterWriter())
+                .reader(soulConnectTacticCharacterReader1(null))
+                .processor(soulConnectTacticCharacterProcessor1())
+                .writer(soulConnectTacticCharacterWriter1())
                 .build();
     }
 
     @Bean
     @StepScope
-    public JpaPagingItemReader<TacticCharacter> soulConnectTacticCharacterReader(
+    public JpaPagingItemReader<TacticCharacter> soulConnectTacticCharacterReader1(
             @Value("#{jobParameters[addedCountJobAndDate]}") String addedCountJobAndDate) {
 
         int addedCount = Integer.parseInt(addedCountJobAndDate.split(",")[0]);
@@ -75,17 +81,62 @@ public class SoulConnectJobConfig {
 
     @Bean
     @StepScope
-    public ItemProcessor<TacticCharacter, SoulconnectBatchdata> soulConnectTacticCharacterProcessor() {
+    public ItemProcessor<TacticCharacter, SoulconnectBatchdata> soulConnectTacticCharacterProcessor1() {
         return tacticCharacter -> SoulconnectBatchdata.builder()
-                .tacticAndSoul(
-                        tacticCharacter.getTactic().getId()
-                                + "-" +
-                                tacticCharacter.getTacticSoulcharacter().getId())
+                        .id(tacticCharacter.getTactic().getId())
+                        .build();
+    }
+
+    @Bean
+    public JpaItemWriter<SoulconnectBatchdata> soulConnectTacticCharacterWriter1(){
+        log.info(">>>>>>>>>>>>> count write >>>>");
+        return new JpaItemWriterBuilder<SoulconnectBatchdata>()
+                .entityManagerFactory(entityManagerFactory)
+                .build();
+    }
+
+
+    @Bean
+    @JobScope
+    public Step soulConnectStep2() throws Exception {
+        return stepBuilderFactory.get("soulConnectStep2")
+                .<TacticCharacter, SoulconnectBatchdata>chunk(10)
+                .reader(soulConnectTacticCharacterReader2(null))
+                .processor(soulConnectTacticCharacterProcessor2())
+                .writer(soulConnectTacticCharacterWriter2())
                 .build();
     }
 
     @Bean
-    public JpaItemWriter<SoulconnectBatchdata> soulConnectTacticCharacterWriter(){
+    @StepScope
+    public JpaPagingItemReader<TacticCharacter> soulConnectTacticCharacterReader2(
+            @Value("#{jobParameters[addedCountJobAndDate]}") String addedCountJobAndDate) {
+
+        int addedCount = Integer.parseInt(addedCountJobAndDate.split(",")[0]);
+
+        return new JpaPagingItemReaderBuilder<TacticCharacter>()
+                .name("JpaPagingItemReader")
+                .pageSize(10)
+                .queryString("select tc from TacticCharacter tc order by tc.id desc")
+                .maxItemCount(addedCount)
+                .entityManagerFactory(entityManagerFactory)
+                .build();
+    }
+
+    @Bean
+    @StepScope
+    public ItemProcessor<TacticCharacter, SoulconnectBatchdata> soulConnectTacticCharacterProcessor2() {
+        return tacticCharacter -> {
+            SoulconnectBatchdata soulconnectBatchdata =
+                    soulconnectBatchdataRepository.findById(tacticCharacter.getTactic().getId())
+                            .orElseThrow();
+            soulconnectBatchdata.addSoulId(tacticCharacter.getTacticSoulcharacter().getId());
+            return soulconnectBatchdata;
+        };
+    }
+
+    @Bean
+    public JpaItemWriter<SoulconnectBatchdata> soulConnectTacticCharacterWriter2(){
         log.info(">>>>>>>>>>>>> count write >>>>");
         return new JpaItemWriterBuilder<SoulconnectBatchdata>()
                 .entityManagerFactory(entityManagerFactory)
