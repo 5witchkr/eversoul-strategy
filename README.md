@@ -1,9 +1,18 @@
 # eversoul-strategy
 
-
 eversoul tactic site backend server
+- hexagonal architecture
+- spring boot multi module project
 
-hexagonal architecture & multi module project
+# Introduce
+```
+This is the backend server for strategy for the game Eversoul,
+including completion of different stages,
+its tactics and answers, and information about its soul-character
+
+In order to more easily write the test code,
+I applied hexagonal architecture and loosened the dependencies
+```
 
   - spring boot
   - spring data jpa
@@ -40,8 +49,7 @@ hexagonal architecture & multi module project
     enum-model, const-model, event-model
     
   }
-  
-  soul-character change event pub -> event sub tactic-soul, answer-soul 
+  The event-driven model was applied to break the dependency between modules.
   ```
 
 
