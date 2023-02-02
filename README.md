@@ -9,6 +9,7 @@ hexagonal architecture & multi module project
   - spring data jpa
   - spring batch
   - spring security
+  - spring data redis
   - jacoco
   - asserj
 
