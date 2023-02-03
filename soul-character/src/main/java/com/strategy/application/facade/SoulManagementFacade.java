@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class SoulManagementFacade {
+public class SoulManagementFacade implements SoulManagementPortFacade{
 
     private final SaveSoulInboundPort saveSoulInboundPort;
     private final PutSoulInboundPort putSoulInboundPort;
