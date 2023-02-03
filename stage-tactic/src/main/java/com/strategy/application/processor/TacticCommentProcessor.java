@@ -30,7 +30,7 @@ public class TacticCommentProcessor implements GetTacticCommentInboundPort, Post
 
     @Override
     public List<TacticCommentResponseDto> getComments(Long tacticId) {
-        return getTactic(tacticId).getTacticComments()
+        return getByReferenceTactic(tacticId).getTacticComments()
                 .stream()
                 .map(this::tacticCommentToCommentResponseDto)
                 .collect(Collectors.toList());
@@ -60,19 +60,10 @@ public class TacticCommentProcessor implements GetTacticCommentInboundPort, Post
         } catch (RuntimeException runtimeException){
             log.warn("tactic not exists");
             throw new NullPointerException("존재하지 않는 Tactic");
-        };
-    }
-
-    private Tactic findTactic(Long tacticId){
-        return tacticOutboundPort.findById(tacticId)
-                .orElseThrow(() -> new NullPointerException("존재하지 않는 Tactic"));
+        }
     }
 
     private Tactic getByReferenceTactic(Long tacticId){
         return tacticOutboundPort.getReferenceById(tacticId);
-    }
-
-    private Tactic getTactic(Long tacticId) {
-        return tacticOutboundPort.getById(tacticId);
     }
 }
