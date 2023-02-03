@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Service
-public class StoryEndingFacade {
+public class StoryEndingFacade implements StoryEndingPortFacade{
 
     private final GetSoulEndingByEpisodeInboundPort getSoulEndingByEpisodeInboundPort;
     private final StoryEpisodeValidator storyEpisodeValidator;
@@ -25,6 +25,8 @@ public class StoryEndingFacade {
         this.storySoulIdValidator = storySoulIdValidator;
     }
 
+
+    @Override
     public List<StoryQuestionEndingResponseDto> getSoulEndingByEpisode(Long soulId, int episode, String ending) {
         storyEpisodeValidator.checkEpisode(episode);
         storyEndingValidoatr.checkEndingValue(ending);
