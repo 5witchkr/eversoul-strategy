@@ -1,7 +1,7 @@
 package com.strategy.adpater.inbound.presentation;
 
 
-import com.strategy.application.facade.TacticCommentFacade;
+import com.strategy.application.facade.TacticCommentPortFacade;
 import com.strategy.application.port.inbound.inputdto.commentdto.TacticCommentRequestDto;
 import com.strategy.application.port.inbound.outputdto.TacticCommentResponseDto;
 import org.springframework.http.ResponseEntity;
@@ -15,20 +15,21 @@ import java.util.List;
 @RequestMapping("/api/tacticcomment")
 public class TacticCommentApi {
 
-    private final TacticCommentFacade tacticCommentFacade;
+    private final TacticCommentPortFacade tacticCommentPortFacade;
 
-    public TacticCommentApi(TacticCommentFacade tacticCommentFacade) {
-        this.tacticCommentFacade = tacticCommentFacade;
+    public TacticCommentApi(TacticCommentPortFacade tacticCommentPortFacade) {
+        this.tacticCommentPortFacade = tacticCommentPortFacade;
     }
+
 
     @GetMapping("/{tacticId}")
     public ResponseEntity<List<TacticCommentResponseDto>> getComment(@PathVariable Long tacticId) {
-        return ResponseEntity.ok().body(tacticCommentFacade.getComments(tacticId));
+        return ResponseEntity.ok().body(tacticCommentPortFacade.getComments(tacticId));
     }
 
     @PostMapping("")
     public ResponseEntity<Void> postComment(@Validated @RequestBody TacticCommentRequestDto commentRequestDto) {
-        tacticCommentFacade.postComment(commentRequestDto);
+        tacticCommentPortFacade.postComment(commentRequestDto);
         return ResponseEntity.created(
                         URI.create("/api/tacticcomment/" + commentRequestDto.getTacticId()))
                 .build();

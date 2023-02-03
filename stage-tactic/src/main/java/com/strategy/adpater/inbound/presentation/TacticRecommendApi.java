@@ -1,7 +1,7 @@
 package com.strategy.adpater.inbound.presentation;
 
 
-import com.strategy.application.facade.TacticRecommendFacade;
+import com.strategy.application.facade.TacticRecommendPortFacade;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,16 +12,27 @@ import java.net.URI;
 @RequestMapping("/api/tacticrecommend")
 public class TacticRecommendApi {
 
-    private final TacticRecommendFacade tacticRecommendFacade;
+    private final TacticRecommendPortFacade tacticRecommendPortFacade;
 
-    public TacticRecommendApi(TacticRecommendFacade tacticRecommendFacade) {
-        this.tacticRecommendFacade = tacticRecommendFacade;
+    public TacticRecommendApi(TacticRecommendPortFacade tacticRecommendPortFacade) {
+        this.tacticRecommendPortFacade = tacticRecommendPortFacade;
     }
 
 
     @PostMapping("{tacticId}")
     public ResponseEntity<Void> postRecommend(@PathVariable Long tacticId,
                                               HttpServletRequest request) {
+        String userIp = getUserIp(request);
+
+        tacticRecommendPortFacade.postRecommend(tacticId, userIp);
+
+        return ResponseEntity.created(
+                        URI.create("/api/stagetactic/tactic" + tacticId))
+                .build();
+    }
+
+
+    private String getUserIp(HttpServletRequest request) {
         String userIp = null;
         userIp = request.getHeader("X-Forwarded-For");
 
@@ -56,11 +67,6 @@ public class TacticRecommendApi {
         if (userIp == null || userIp.length() == 0 || "unknown".equalsIgnoreCase(userIp)) {
             userIp = request.getRemoteAddr();
         }
-
-        tacticRecommendFacade.postRecommend(tacticId, userIp);
-
-        return ResponseEntity.created(
-                        URI.create("/api/stagetactic/tactic" + tacticId))
-                .build();
+        return userIp;
     }
 }

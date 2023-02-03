@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TacticCommentFacade {
+public class TacticCommentFacade implements TacticCommentPortFacade{
 
     private final GetTacticCommentInboundPort getTacticCommentInboundPort;
     private final PostTacticCommentInboundPort postTacticCommentInboundPort;
@@ -20,10 +20,12 @@ public class TacticCommentFacade {
     }
 
 
+    @Override
     public void postComment(TacticCommentRequestDto commentRequestDto) {
         postTacticCommentInboundPort.postComment(commentRequestDto);
     }
 
+    @Override
     public List<TacticCommentResponseDto> getComments(Long tacticId) {
         return getTacticCommentInboundPort.getComments(tacticId);
     }

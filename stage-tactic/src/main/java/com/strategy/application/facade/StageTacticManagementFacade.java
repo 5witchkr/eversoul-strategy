@@ -18,7 +18,7 @@ import com.strategy.application.validator.SoulNameValidator;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StageTacticManagementFacade {
+public class StageTacticManagementFacade implements StageTacticManagementPortFacade{
 
     private final SaveTacticSoulInboundPort saveTacticSoulInboundPort;
     private final PutTacticSoulInboundPort putTacticSoulInboundPort;
@@ -51,35 +51,43 @@ public class StageTacticManagementFacade {
     }
 
 
+    @Override
     public void saveSoul(SoulSaveDto soulSaveDto) {
         soulNameValidator.checkSoulName(soulSaveDto.getName());
         saveTacticSoulInboundPort.saveSoul(soulSaveDto);
     }
 
+    @Override
     public void saveStage(StageSaveDto stageSaveDto) {
         saveStageInboundPort.saveStage(stageSaveDto);
     }
 
+    @Override
     public void deleteTactic(Long id) {
         deleteTacticInboundPort.deleteTactic(id);
     }
 
+    @Override
     public void deleteStage(Long id) {
         deleteStageInboundPort.deleteStage(id);
     }
 
+    @Override
     public void deleteSoul(Long id) {
         deleteTacticSoulInboundPort.deleteSoul(id);
     }
 
+    @Override
     public void putTactic(TacticPutDto tacticPutDto) {
         putTacticInboundPort.putTactic(tacticPutDto);
     }
 
+    @Override
     public void putStage(StagePutDto stagePutDto) {
         putStageInboundPort.putStage(stagePutDto);
     }
 
+    @Override
     public void putSoul(SoulPutDto soulPutDto) {
         soulNameValidator.checkSoulName(soulPutDto.getName());
         putTacticSoulInboundPort.putSoul(soulPutDto);
