@@ -1,8 +1,8 @@
 package com.strategy.adapter.inbound.presentation;
 
 
-import com.strategy.application.facade.SoulManagementFacade;
-import com.strategy.application.facade.SoulCharacterFacade;
+import com.strategy.application.facade.SoulCharacterPortFacade;
+import com.strategy.application.facade.SoulManagementPortFacade;
 import com.strategy.application.port.inbound.inputdto.SoulPutRequestDto;
 import com.strategy.application.port.inbound.inputdto.SoulSaveRequestDto;
 import com.strategy.application.port.inbound.outputdto.SoulCharacterResponseDto;
@@ -19,37 +19,37 @@ public class SoulCharacterAdminApi {
     @Value("${devValue}")
     private String value;
 
-    private final SoulCharacterFacade soulCharacterFacade;
-    private final SoulManagementFacade soulManagementFacade;
 
+    private final SoulManagementPortFacade soulManagementPortFacade;
+    private final SoulCharacterPortFacade soulCharacterPortFacade;
 
-    public SoulCharacterAdminApi(SoulCharacterFacade soulCharacterFacade, SoulManagementFacade soulManagementFacade) {
-        this.soulCharacterFacade = soulCharacterFacade;
-        this.soulManagementFacade = soulManagementFacade;
+    public SoulCharacterAdminApi(SoulManagementPortFacade soulManagementPortFacade, SoulCharacterPortFacade soulCharacterPortFacade) {
+        this.soulManagementPortFacade = soulManagementPortFacade;
+        this.soulCharacterPortFacade = soulCharacterPortFacade;
     }
 
     @GetMapping("/tier")
     public ResponseEntity<List<SoulCharacterResponseDto>> getSoulByTier(@RequestParam String tier) {
-        return ResponseEntity.ok(soulCharacterFacade.getSoulByTier(tier));
+        return ResponseEntity.ok(soulCharacterPortFacade.getSoulByTier(tier));
     }
 
     @PostMapping("/soul")
     public void postSoul(@RequestParam String devValue,
                          @RequestBody SoulSaveRequestDto soulSaveRequestDto){
         if (!devValue.equals(value)) return;
-        soulManagementFacade.saveSoul(soulSaveRequestDto);
+        soulManagementPortFacade.saveSoul(soulSaveRequestDto);
     }
 
     @DeleteMapping("/soul")
     public void deleteSoul(@RequestParam String devValue, Long id){
         if (!devValue.equals(value)) return;
-        soulManagementFacade.deleteSoul(id);
+        soulManagementPortFacade.deleteSoul(id);
     }
 
     @PutMapping("/soul")
     public void putSoul(@RequestParam String devValue,
                         @RequestBody SoulPutRequestDto soulPutRequestDto){
         if (!devValue.equals(value)) return;
-        soulManagementFacade.putSoul(soulPutRequestDto);
+        soulManagementPortFacade.putSoul(soulPutRequestDto);
     }
 }

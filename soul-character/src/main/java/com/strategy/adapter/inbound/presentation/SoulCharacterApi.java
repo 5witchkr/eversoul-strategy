@@ -1,9 +1,8 @@
 package com.strategy.adapter.inbound.presentation;
 
 
-import com.strategy.application.facade.SoulCharacterFacade;
+import com.strategy.application.facade.SoulCharacterPortFacade;
 import com.strategy.application.port.inbound.outputdto.SoulCharacterResponseDto;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +15,15 @@ import java.util.List;
 @RequestMapping("/api/soulcharacter")
 public class SoulCharacterApi {
 
-    private final SoulCharacterFacade soulCharacterFacade;
+    private final SoulCharacterPortFacade soulCharacterPortFacade;
 
-    public SoulCharacterApi(SoulCharacterFacade soulCharacterFacade) {
-        this.soulCharacterFacade = soulCharacterFacade;
+    public SoulCharacterApi(SoulCharacterPortFacade soulCharacterPortFacade) {
+        this.soulCharacterPortFacade = soulCharacterPortFacade;
     }
 
 
     @GetMapping("/tier")
     public ResponseEntity<List<SoulCharacterResponseDto>> getSoulByTier(@RequestParam String tier) {
-        return ResponseEntity.ok(soulCharacterFacade.getSoulByTier(tier));
+        return ResponseEntity.ok(soulCharacterPortFacade.getSoulByTier(tier));
     }
 }
