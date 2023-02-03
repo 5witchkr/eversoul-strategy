@@ -3,6 +3,7 @@ package com.strategy.processor;
 
 import com.strategy.adpater.outbound.persistence.entity.Tactic;
 import com.strategy.adpater.outbound.persistence.entity.TacticComment;
+import com.strategy.application.port.inbound.inputdto.commentdto.TacticCommentRequestDto;
 import com.strategy.application.port.inbound.outputdto.TacticCommentResponseDto;
 import com.strategy.application.port.outbound.TacticCommentOutboundPort;
 import com.strategy.application.port.outbound.TacticOutboundPort;
@@ -56,7 +57,24 @@ public class TacticCommentProcessorTests {
     @TestFactory
     @DisplayName("postComment Tests")
     Stream<DynamicTest> postCommentTests() {
-        return Stream.of();
+        tacticOutboundPort = new TestTacticOutboundPort();
+        tacticCommentOutboundPort = new TestTacticCommentOutboundPort();
+        tacticCommentProcessor = new TacticCommentProcessor(tacticCommentOutboundPort, tacticOutboundPort);
+
+        final TacticCommentRequestDto tacticCommentRequestDto =
+                TacticCommentRequestDto.builder().tacticId(2L).username("작성자").contents("댓글내용").build();
+        final TacticCommentRequestDto notExistTacticCommentReqDto =
+                TacticCommentRequestDto.builder().tacticId(111L).username("작성자").contents("댓글내용").build();
+
+        return Stream.of(
+                DynamicTest.dynamicTest("성공케이스: 댓글 작성에 성공한다.", () ->
+                        tacticCommentProcessor.postComment(tacticCommentRequestDto)
+                ),
+                DynamicTest.dynamicTest("실패케이스: 존재하지 않는 Tactic", () ->
+                        assertThatThrownBy(() -> tacticCommentProcessor.postComment(notExistTacticCommentReqDto))
+                                .isInstanceOf(NullPointerException.class)
+                                .hasMessageContaining("존재하지 않는 Tactic"))
+        );
     }
 
     private static class TestTacticOutboundPort implements TacticOutboundPort{
@@ -73,15 +91,7 @@ public class TacticCommentProcessorTests {
 
         @Override
         public Tactic getById(Long tacticId) {
-            final Tactic tactic = Tactic.builder().build();
-            final TacticComment tacticComment1 = TacticComment.builder()
-                    .username("username1").contents("contents1").tactic(tactic).build();
-            final TacticComment tacticComment2 = TacticComment.builder()
-                    .username("username2").contents("contents2").tactic(tactic).build();
-            final TacticComment tacticComment3 = TacticComment.builder()
-                    .username("username3").contents("contents3").tactic(tactic).build();
-            tactic.setTacticComments(List.of(tacticComment1,tacticComment2,tacticComment3));
-            return tactic;
+            return null;
         }
 
         @Override
@@ -91,6 +101,20 @@ public class TacticCommentProcessorTests {
 
         @Override
         public Tactic getReferenceById(Long tacticId) {
+            if (tacticId == 1L) {
+                final Tactic tactic = Tactic.builder().id(1L).build();
+                final TacticComment tacticComment1 = TacticComment.builder()
+                        .username("username1").contents("contents1").tactic(tactic).build();
+                final TacticComment tacticComment2 = TacticComment.builder()
+                        .username("username2").contents("contents2").tactic(tactic).build();
+                final TacticComment tacticComment3 = TacticComment.builder()
+                        .username("username3").contents("contents3").tactic(tactic).build();
+                tactic.setTacticComments(List.of(tacticComment1,tacticComment2,tacticComment3));
+                return tactic;
+            }
+            if (tacticId == 2L) {
+                return Tactic.builder().id(2L).build();
+            }
             return null;
         }
 
@@ -104,7 +128,10 @@ public class TacticCommentProcessorTests {
 
         @Override
         public void save(TacticComment tacticComment) {
-
+            if (tacticComment.getTactic().getId() == 2L) {
+                return;
+            }
+            throw new NullPointerException();
         }
     }
 
