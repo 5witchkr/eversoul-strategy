@@ -48,7 +48,7 @@ public class SoulCharacterApiTests {
         );
     }
 
-    private class TestSoulCharacterPortFacade implements SoulCharacterPortFacade {
+    private static class TestSoulCharacterPortFacade implements SoulCharacterPortFacade {
         @Override
         public List<SoulCharacterResponseDto> getSoulByTier(String tier) {
             return List.of(SoulCharacterResponseDto.builder().tier("SS").build());
