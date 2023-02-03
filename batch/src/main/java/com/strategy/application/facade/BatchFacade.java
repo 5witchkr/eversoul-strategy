@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class BatchFacade {
+public class BatchFacade implements BatchPortFacade{
 
     private final StatisticSoulSelectInboundPort statisticSoulSelectInboundPort;
     private final SoulSelectBatchInboundPort soulSelectBatchInboundPort;
@@ -24,19 +24,21 @@ public class BatchFacade {
     }
 
 
-
+    @Override
     public void soulSelectBatch() {
         Long addedCount = statisticSoulSelectInboundPort.getAddedCount();
         soulSelectBatchInboundPort.addData(addedCount);
         statisticSoulSelectInboundPort.saveLastCount();
     }
 
+    @Override
     public void positionBatch() {
         Long addedCount = statisticPositionInboundPort.getAddedCount();
         positionBatchInboundPort.addData(addedCount);
         statisticPositionInboundPort.saveLastCount();
     }
 
+    @Override
     public void soulConnectBatch() {
         Long addedCount = statisticSoulConnectInboundPort.getAddedCount();
         soulConnectBatchInboundPort.addData(addedCount);

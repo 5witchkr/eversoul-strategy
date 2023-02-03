@@ -1,7 +1,7 @@
 package com.strategy.adapter.inbound.presentation;
 
 
-import com.strategy.application.facade.StatisticFacade;
+import com.strategy.application.facade.StatisticPortFacade;
 import com.strategy.application.port.inbound.outputdto.PositionStatResponseDto;
 import com.strategy.application.port.inbound.outputdto.SoulSelectResponseDto;
 import org.springframework.http.ResponseEntity;
@@ -14,24 +14,26 @@ import java.util.List;
 @RequestMapping("/api/stat")
 public class StatisticApi {
 
-    private final StatisticFacade statisticFacade;
+    private final StatisticPortFacade statisticPortFacade;
 
-    public StatisticApi(StatisticFacade statisticFacade) {
-        this.statisticFacade = statisticFacade;
+
+    public StatisticApi(StatisticPortFacade statisticPortFacade) {
+        this.statisticPortFacade = statisticPortFacade;
     }
+
 
     @GetMapping("/soulselect")
     public ResponseEntity<List<SoulSelectResponseDto>> getTopSoulSelect(@RequestParam int argNumber) {
-        return ResponseEntity.ok(statisticFacade.getTopSoulSelect(argNumber));
+        return ResponseEntity.ok(statisticPortFacade.getTopSoulSelect(argNumber));
     }
 
     @GetMapping("/soulselect/{soulId}")
     public ResponseEntity<SoulSelectResponseDto> getOneSoulSelect(@PathVariable Long soulId) {
-        return ResponseEntity.ok(statisticFacade.getOneSoulSelect(soulId));
+        return ResponseEntity.ok(statisticPortFacade.getOneSoulSelect(soulId));
     }
 
     @GetMapping("/position")
     public ResponseEntity<List<PositionStatResponseDto>> getPositionStat() {
-        return ResponseEntity.ok(statisticFacade.getPositionStat());
+        return ResponseEntity.ok(statisticPortFacade.getPositionStat());
     }
 }

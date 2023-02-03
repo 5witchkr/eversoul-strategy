@@ -1,7 +1,7 @@
 package com.strategy.adapter.inbound.presentation;
 
 
-import com.strategy.application.facade.BatchFacade;
+import com.strategy.application.facade.BatchPortFacade;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,19 +14,19 @@ public class BatchOnDemandApi {
     @Value("${devValue}")
     private String value;
 
-    private final BatchFacade batchFacade;
+    private final BatchPortFacade batchPortFacade;
 
-
-    public BatchOnDemandApi(BatchFacade batchFacade) {
-        this.batchFacade = batchFacade;
+    public BatchOnDemandApi(BatchPortFacade batchPortFacade) {
+        this.batchPortFacade = batchPortFacade;
     }
+
 
     @PostMapping("/soulselect")
     public String postSoulSelect(@RequestParam String devValue) {
 
         if (!devValue.equals(value)) return "X";
 
-        batchFacade.soulSelectBatch();
+        batchPortFacade.soulSelectBatch();
 
         return "O";
     }
@@ -36,7 +36,7 @@ public class BatchOnDemandApi {
 
         if (!devValue.equals(value)) return "X";
 
-        batchFacade.positionBatch();
+        batchPortFacade.positionBatch();
 
         return "O";
     }
@@ -46,7 +46,7 @@ public class BatchOnDemandApi {
 
         if (!devValue.equals(value)) return "X";
 
-        batchFacade.soulConnectBatch();
+        batchPortFacade.soulConnectBatch();
 
         return "O";
     }
