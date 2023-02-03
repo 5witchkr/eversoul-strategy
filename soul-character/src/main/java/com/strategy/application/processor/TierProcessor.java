@@ -30,6 +30,9 @@ public class TierProcessor implements GetTierInboundPort {
     }
 
     private SoulCharacterResponseDto soulCharacterToSoulCharacterResponseDto(SoulCharacter soulCharacter){
+        if (soulCharacter == null) {
+            return null;
+        }
         SoulCharacterResponseDto.SoulCharacterResponseDtoBuilder soulCharacterResponseDto = SoulCharacterResponseDto.builder();
         soulCharacterResponseDto.id(soulCharacter.getId());
         soulCharacterResponseDto.name(soulCharacter.getName());
