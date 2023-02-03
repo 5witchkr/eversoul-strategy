@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StatisticFacade {
+public class StatisticFacade implements StatisticPortFacade{
 
     private final GetPositionStatInboundPort getPositionStatInboundPort;
     private final GetSoulSelectStatInboundPort getSoulSelectStatInboundPort;
@@ -21,14 +21,17 @@ public class StatisticFacade {
     }
 
 
+    @Override
     public List<PositionStatResponseDto> getPositionStat() {
         return getPositionStatInboundPort.getPositionStat();
     }
 
+    @Override
     public SoulSelectResponseDto getOneSoulSelect(Long soulId) {
         return getSoulSelectStatInboundPort.getOne(soulId);
     }
 
+    @Override
     public List<SoulSelectResponseDto> getTopSoulSelect(int argNumber) {
         return getSoulSelectStatInboundPort.getTopLate(argNumber);
     }
