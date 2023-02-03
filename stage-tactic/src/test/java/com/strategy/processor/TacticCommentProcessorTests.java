@@ -53,6 +53,12 @@ public class TacticCommentProcessorTests {
         );
     }
 
+    @TestFactory
+    @DisplayName("postComment Tests")
+    Stream<DynamicTest> postCommentTests() {
+        return Stream.of();
+    }
+
     private static class TestTacticOutboundPort implements TacticOutboundPort{
 
         @Override
