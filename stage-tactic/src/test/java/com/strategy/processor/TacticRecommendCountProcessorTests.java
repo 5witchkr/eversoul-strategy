@@ -39,7 +39,7 @@ public class TacticRecommendCountProcessorTests {
         );
     }
 
-    private class TestTacticOutBoundPort implements TacticOutboundPort {
+    private static class TestTacticOutBoundPort implements TacticOutboundPort {
         @Override
         public Tactic save(Tactic tactic) {
             return null;
