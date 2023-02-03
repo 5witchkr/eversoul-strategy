@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StageTacticFacade {
+public class StageTacticFacade implements StageTacticPortFacade{
 
     private final GetTacticInboundPort getTacticInboundPort;
     private final PostTacticInboundPort postTacticInboundPort;
@@ -47,6 +47,7 @@ public class StageTacticFacade {
         this.tacticSoulIdValidator = tacticSoulIdValidator;
     }
 
+    @Override
     public List<RecommendTacticResponseDto> getRecommendWithoutBans(int location, int step, List<String> bans) {
         stageParamValidator.checkLocation(location);
         stageParamValidator.checkStep(step);
@@ -54,6 +55,7 @@ public class StageTacticFacade {
         return getTacticInboundPort.getRecommendWithoutBans(location ,step ,filteredBans);
     }
 
+    @Override
     public void postTactic(TacticRequestDto tacticRequestDto){
         stageParamValidator.checkLocation(tacticRequestDto.getLocation());
         stageParamValidator.checkStep(tacticRequestDto.getStep());
