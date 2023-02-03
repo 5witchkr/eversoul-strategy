@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Service
-public class SoulCharacterFacade {
+public class SoulCharacterFacade implements SoulCharacterPortFacade {
 
     private final GetTierInboundPort getTierInboundPort;
     private final TierValidator tierValidator;
