@@ -8,9 +8,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    //redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    //batch
+
     implementation 'org.springframework.boot:spring-boot-starter-batch'
 
     implementation project(':stage-tactic')
