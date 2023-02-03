@@ -11,10 +11,12 @@ import org.junit.jupiter.api.TestFactory;
 
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("TierProcessor Tests")
 public class TierProcessorTests {
@@ -45,7 +47,11 @@ public class TierProcessorTests {
                             .isInstanceOf(SoulCharacterResponseDto.class);
                     assertThat(soulCharacterResponseDtos).usingRecursiveFieldByFieldElementComparator()
                             .contains(soulCharacterDto1, soulCharacterDto2);
-                })
+                }),
+                DynamicTest.dynamicTest("실패케이스: null point exception" ,() ->
+                        assertThatThrownBy(() -> tierProcessor.getSoulByTier(null))
+                        .isInstanceOf(NullPointerException.class)
+                )
         );
     }
 
@@ -58,7 +64,10 @@ public class TierProcessorTests {
                 .build();
         @Override
         public Optional<List<SoulCharacter>> getByTier(String tier) {
-            return Optional.of(List.of(soulCharacter1, soulCharacter2));
+            if (Objects.equals(tier, "SSS")) {
+                return Optional.of(List.of(soulCharacter1, soulCharacter2));
+            }
+            return Optional.empty();
         }
     }
 }
