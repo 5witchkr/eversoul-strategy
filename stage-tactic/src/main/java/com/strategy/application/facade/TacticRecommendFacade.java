@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 
 @Service
-public class TacticRecommendFacade {
+public class TacticRecommendFacade implements TacticRecommendPortFacade{
 
     private final TacticRecommendInboundPort tacticRecommendInboundPort;
     private final TacticRecommendCheckInboundPort tacticRecommendCheckInboundPort;
@@ -19,6 +19,7 @@ public class TacticRecommendFacade {
         this.tacticRecommendCheckInboundPort = tacticRecommendCheckInboundPort;
     }
 
+    @Override
     @Transactional
     public void postRecommend(Long tacticId, String userIp) {
         if (!tacticRecommendCheckInboundPort
