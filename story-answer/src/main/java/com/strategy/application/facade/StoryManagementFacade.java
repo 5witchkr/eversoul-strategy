@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class StoryManagementFacade {
+public class StoryManagementFacade implements StoryManagementPortFacade{
 
     private final StoryAnswerManagementInboundPort storyAnswerManagementInboundPort;
     private final StoryQuestionManagementInboundPort storyQuestionManagementInboundPort;
@@ -29,35 +29,45 @@ public class StoryManagementFacade {
         this.storySoulManagementInboundPort = storySoulManagementInboundPort;
     }
 
+
+    @Override
     public void postSoul(StorySoulSaveDto soulSaveDto) {
         storySoulManagementInboundPort.postStorySoul(soulSaveDto);
     }
 
+    @Override
     public void postEpisode(StoryEpisodeSaveDto storyEpisodeSaveDto) {
         storyEpisodeManagementInboundPort.postStoryEpisode(storyEpisodeSaveDto);
     }
 
+    @Override
     public void postQuestion(StoryQuestionSaveDto storyQuestionSaveDto) {
         storyQuestionManagementInboundPort.postStoryQuestion(storyQuestionSaveDto);
     }
 
+    @Override
     public void postAnswer(StoryAnswerSaveDto storyAnswerSaveDto) {
         storyAnswerManagementInboundPort.postStoryAnswer(storyAnswerSaveDto);
     }
 
+    @Override
     public void deleteSoul(Long id) {
         storySoulManagementInboundPort.deleteStorySoul(id);
     }
 
+    @Override
     public void deleteEpisode(Long id) {
         storyEpisodeManagementInboundPort.deleteStoryEpisode(id);
     }
 
+    @Override
     public void deleteQuestion(Long id) {
         storyQuestionManagementInboundPort.deleteStoryQuestion(id);
     }
 
+    @Override
     public void deleteAnswer(Long id) {
         storyAnswerManagementInboundPort.deleteStoryAnswer(id);
     }
 }
+
