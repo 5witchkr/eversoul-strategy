@@ -69,7 +69,7 @@ public class TacticRecommendCheckProcessorTests {
         );
     }
 
-    private class TestRedisTacticRecommendOutboundPort implements RedisTacticRecommendOutboundPort {
+    private static class TestRedisTacticRecommendOutboundPort implements RedisTacticRecommendOutboundPort {
         @Override
         public Set<String> getRecommendedIps(String key) {
             String existsIp = "111.222.333.444";

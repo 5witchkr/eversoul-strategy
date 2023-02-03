@@ -2,6 +2,7 @@ package com.strategy.application.port.inbound.inputdto.tacticdto;
 
 
 import com.strategy.application.port.inbound.inputdto.souldto.SoulCharacterTacticValidReqDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,5 +43,16 @@ public class TacticRequestDto {
     @Size(min = 5, max = 5)
     private List<SoulCharacterTacticValidReqDto> soulCharacters;
 
-    public TacticRequestDto() {}
+    @Builder
+    public TacticRequestDto(int location, int step, String title,
+                            String position, int power, String info,
+                            List<SoulCharacterTacticValidReqDto> soulCharacters) {
+        this.location = location;
+        this.step = step;
+        this.title = title;
+        this.position = position;
+        this.power = power;
+        this.info = info;
+        this.soulCharacters = soulCharacters;
+    }
 }
