@@ -23,8 +23,9 @@ public class StatisticApi {
 
 
     @GetMapping("/soulselect")
-    public ResponseEntity<List<SoulSelectResponseDto>> getTopSoulSelect(@RequestParam int argNumber) {
-        return ResponseEntity.ok(statisticPortFacade.getTopSoulSelect(argNumber));
+    public ResponseEntity<List<SoulSelectResponseDto>> getTopSoulSelect(@RequestParam int argNumber,
+                                                                        @RequestParam String rating) {
+        return ResponseEntity.ok(statisticPortFacade.getSoulSelect(argNumber, rating));
     }
 
     @GetMapping("/soulselect/{soulId}")
