@@ -12,5 +12,5 @@ public interface StatisticPortFacade {
 
     SoulSelectResponseDto getOneSoulSelect(Long soulId);
 
-    List<SoulSelectResponseDto> getTopSoulSelect(int argNumber);
+    List<SoulSelectResponseDto> getSoulSelect(int argNumber, String rating);
 }

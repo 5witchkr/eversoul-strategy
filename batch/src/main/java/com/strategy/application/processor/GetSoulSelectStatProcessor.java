@@ -21,7 +21,7 @@ public class GetSoulSelectStatProcessor implements GetSoulSelectStatInboundPort 
     }
 
     @Override
-    public List<SoulSelectResponseDto> getTopLate(int argNumber) {
+    public List<SoulSelectResponseDto> getTopRating(int argNumber) {
         return statisticSoulSelectOutboundPort.findAll()
                 .stream()
                 .sorted(Comparator.comparingInt(StatisticSoulselect::getSelectCount).reversed())
@@ -33,6 +33,16 @@ public class GetSoulSelectStatProcessor implements GetSoulSelectStatInboundPort 
     @Override
     public SoulSelectResponseDto getOne(Long id) {
         return statSoulSelectToSoulSelectResDto(statisticSoulSelectOutboundPort.getReferenceById(id));
+    }
+
+    @Override
+    public List<SoulSelectResponseDto> getBottomRating(int argNumber) {
+        return statisticSoulSelectOutboundPort.findAll()
+                .stream()
+                .sorted(Comparator.comparingInt(StatisticSoulselect::getSelectCount))
+                .limit(argNumber)
+                .map(this::statSoulSelectToSoulSelectResDto)
+                .collect(Collectors.toList());
     }
 
     private SoulSelectResponseDto statSoulSelectToSoulSelectResDto(StatisticSoulselect statisticSoulselect){
