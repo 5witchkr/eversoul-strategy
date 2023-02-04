@@ -19,7 +19,7 @@ public class StatisticSoulconnect {
     @Column
     private Long lastBatch;
 
-    @Column //ex 14_24 -> 14와 같이한 24
+    @Column //ex 24_13 ->
     private String connectSouls;
 
     @Column

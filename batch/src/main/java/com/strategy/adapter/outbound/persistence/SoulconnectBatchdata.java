@@ -19,7 +19,7 @@ public class SoulconnectBatchdata {
     private Long id;
 
     @Column
-    private String tacticAndSoul; //ex tactic 1, soul 4  -> 1-4
+    private String tacticAndSoul; //ex tactic 1, soul 4
 
     @Column
     private Long lastBatch;
