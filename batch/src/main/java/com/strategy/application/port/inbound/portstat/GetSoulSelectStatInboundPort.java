@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface GetSoulSelectStatInboundPort {
 
-    List<SoulSelectResponseDto> getTopLate(int argNumber);
+    List<SoulSelectResponseDto> getTopRating(int argNumber);
 
     SoulSelectResponseDto getOne(Long id);
+
+    List<SoulSelectResponseDto> getBottomRating(int argNumber);
 }
