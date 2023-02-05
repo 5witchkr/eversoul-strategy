@@ -96,7 +96,7 @@ public class GetSoulEndingByEpisodeProcessorTests {
 
     private class TestStoryEpisodeOutboundPort implements StoryEpisodeOutboundPort {
         @Override
-        public StoryEpisode getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter) {
+        public Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter) {
 
             final StorySoulcharacter storySoulcharacterData = StorySoulcharacter.builder().id(1L).name("아드리안").build();
 
@@ -126,7 +126,7 @@ public class GetSoulEndingByEpisodeProcessorTests {
 
             storyEpisode.setStoryQuestions(List.of(storyQuestion1,storyQuestion3,storyQuestion2));
 
-            return storyEpisode;
+            return Optional.of(storyEpisode);
         }
 
         @Override
@@ -145,9 +145,9 @@ public class GetSoulEndingByEpisodeProcessorTests {
         }
 
         @Override
-        public StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int i, Long storySoulcharacter) {
+        public Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter_Id(int i, Long storySoulcharacter) {
 
-            return null;
+            return Optional.empty();
         }
     }
 }

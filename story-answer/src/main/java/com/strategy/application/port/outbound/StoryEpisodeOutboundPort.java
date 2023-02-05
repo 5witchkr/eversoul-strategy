@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface StoryEpisodeOutboundPort {
 
-    StoryEpisode getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter);
+    Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter);
 
     void save(StoryEpisode storyEpisode);
 
@@ -22,5 +22,5 @@ public interface StoryEpisodeOutboundPort {
      * @param storySoulcharacterId
      * @return
      */
-    StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId);
+    Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId);
 }
