@@ -19,7 +19,7 @@ public class StoryEpisodeAdapter implements StoryEpisodeOutboundPort {
     }
 
     @Override
-    public StoryEpisode getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter) {
+    public Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter) {
         return storyEpisodeRepository.getByOrderNumberAndStorySoulcharacter(orderNumber, storySoulcharacter);
     }
 
@@ -39,7 +39,7 @@ public class StoryEpisodeAdapter implements StoryEpisodeOutboundPort {
     }
 
     @Override
-    public StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId) {
+    public Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId) {
         return storyEpisodeRepository.getByOrderNumberAndStorySoulcharacter_Id(orderNumber, storySoulcharacterId);
     }
 }
