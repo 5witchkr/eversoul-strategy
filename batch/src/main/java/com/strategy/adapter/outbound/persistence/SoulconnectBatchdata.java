@@ -25,11 +25,20 @@ public class SoulconnectBatchdata {
     private Long soulId;
 
     @Column
+    private int isBatched;
+
+    @Column
     private Long lastBatch;
 
     @Builder
     public SoulconnectBatchdata(Long tacticId, Long soulId){
         this.tacticId = tacticId;
         this.soulId = soulId;
+        this.isBatched = 0;
+    }
+
+    public SoulconnectBatchdata isBatchDone(){
+        this.isBatched = 1;
+        return this;
     }
 }
