@@ -70,6 +70,7 @@ I applied hexagonal architecture and loosened the dependencies
 ---
 
 ## project deploy
+![화면 캡처 2023-02-05 142949](https://user-images.githubusercontent.com/95848796/216806662-acb7f9b2-e292-4dcc-9603-3f805cd04948.png)
   - project link
     - https://eversoul.pages.dev
   - backend restdocs
@@ -87,7 +88,5 @@ I applied hexagonal architecture and loosened the dependencies
     - framework: svelteKit
     - infra: cloudflare
     - project repository: https://github.com/5witchkr/eversoul
-
-![화면 캡처 2023-02-05 142949](https://user-images.githubusercontent.com/95848796/216806662-acb7f9b2-e292-4dcc-9603-3f805cd04948.png)
 
 ---
