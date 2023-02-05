@@ -19,13 +19,17 @@ public class SoulconnectBatchdata {
     private Long id;
 
     @Column
-    private String tacticAndSoul; //ex tactic 1, soul 4
+    private Long tacticId;
+
+    @Column
+    private Long soulId;
 
     @Column
     private Long lastBatch;
 
     @Builder
-    public SoulconnectBatchdata(String tacticAndSoul){
-        this.tacticAndSoul = tacticAndSoul;
+    public SoulconnectBatchdata(Long tacticId, Long soulId){
+        this.tacticId = tacticId;
+        this.soulId = soulId;
     }
 }
