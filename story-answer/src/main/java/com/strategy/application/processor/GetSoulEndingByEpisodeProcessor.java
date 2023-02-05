@@ -36,6 +36,7 @@ public class GetSoulEndingByEpisodeProcessor implements GetSoulEndingByEpisodeIn
         StorySoulcharacter storySoulcharacter =storySoulcharacterOutboundPort.getByReferenceId(soulId);
 
         return storyEpisodeOutboundPort.getByOrderNumberAndStorySoulcharacter(0, storySoulcharacter)
+                .orElseThrow(() -> new IllegalArgumentException("아직 준비중인 정령"))
                 .getStoryQuestions().stream()
                 .map(this::storyQuestionToEndingResDto)
                 .sorted(Comparator.comparing(StoryQuestionEndingResponseDto::getOrderNumber))
