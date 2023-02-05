@@ -3,6 +3,8 @@ package com.strategy.application.facade;
 import com.strategy.application.port.inbound.portbatch.*;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class BatchFacade implements BatchPortFacade{
@@ -11,15 +13,22 @@ public class BatchFacade implements BatchPortFacade{
     private final SoulSelectBatchInboundPort soulSelectBatchInboundPort;
     private final StatisticPositionInboundPort statisticPositionInboundPort;
     private final PositionBatchInboundPort positionBatchInboundPort;
-    private final StatisticSoulConnectInboundPort statisticSoulConnectInboundPort;
+    private final StatisticSoulConnectDataInboundPort statisticSoulConnectDataInboundPort;
+    private final SoulConnectDataBatchInboundPort soulConnectDataBatchInboundPort;
     private final SoulConnectBatchInboundPort soulConnectBatchInboundPort;
 
-    public BatchFacade(StatisticSoulSelectInboundPort statisticSoulSelectInboundPort, SoulSelectBatchInboundPort soulSelectBatchInboundPort, StatisticPositionInboundPort statisticPositionInboundPort, PositionBatchInboundPort positionBatchInboundPort, StatisticSoulConnectInboundPort statisticSoulConnectInboundPort, SoulConnectBatchInboundPort soulConnectBatchInboundPort) {
+    public BatchFacade(StatisticSoulSelectInboundPort statisticSoulSelectInboundPort,
+                       SoulSelectBatchInboundPort soulSelectBatchInboundPort,
+                       StatisticPositionInboundPort statisticPositionInboundPort,
+                       PositionBatchInboundPort positionBatchInboundPort,
+                       StatisticSoulConnectDataInboundPort statisticSoulConnectDataInboundPort,
+                       SoulConnectDataBatchInboundPort soulConnectDataBatchInboundPort, SoulConnectBatchInboundPort soulConnectBatchInboundPort) {
         this.statisticSoulSelectInboundPort = statisticSoulSelectInboundPort;
         this.soulSelectBatchInboundPort = soulSelectBatchInboundPort;
         this.statisticPositionInboundPort = statisticPositionInboundPort;
         this.positionBatchInboundPort = positionBatchInboundPort;
-        this.statisticSoulConnectInboundPort = statisticSoulConnectInboundPort;
+        this.statisticSoulConnectDataInboundPort = statisticSoulConnectDataInboundPort;
+        this.soulConnectDataBatchInboundPort = soulConnectDataBatchInboundPort;
         this.soulConnectBatchInboundPort = soulConnectBatchInboundPort;
     }
 
@@ -40,8 +49,10 @@ public class BatchFacade implements BatchPortFacade{
 
     @Override
     public void soulConnectBatch() {
-        Long addedCount = statisticSoulConnectInboundPort.getAddedCount();
-        soulConnectBatchInboundPort.addData(addedCount);
-        statisticSoulConnectInboundPort.saveLastCount();
+        Long addedCount = statisticSoulConnectDataInboundPort.getAddedCount();
+        soulConnectDataBatchInboundPort.addData(addedCount);
+        statisticSoulConnectDataInboundPort.saveLastCount();
+        List<Long> tacticIds = statisticSoulConnectDataInboundPort.getAddedTacticId();
+        soulConnectBatchInboundPort.addData(tacticIds);
     }
 }
