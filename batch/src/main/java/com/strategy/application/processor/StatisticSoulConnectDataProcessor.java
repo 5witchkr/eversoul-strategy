@@ -2,18 +2,21 @@ package com.strategy.application.processor;
 
 
 import com.strategy.adapter.outbound.persistence.SoulconnectBatchdata;
-import com.strategy.application.port.inbound.portbatch.StatisticSoulConnectInboundPort;
+import com.strategy.application.port.inbound.portbatch.StatisticSoulConnectDataInboundPort;
 import com.strategy.application.port.outbound.SoulconnectBatchdataOutboundPort;
 import com.strategy.application.port.outbound.TacticCharacterOutboundPort;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
-public class StatisticSoulConnectProcessor implements StatisticSoulConnectInboundPort {
+public class StatisticSoulConnectDataProcessor implements StatisticSoulConnectDataInboundPort {
 
     private final TacticCharacterOutboundPort tacticCharacterOutboundPort;
     private final SoulconnectBatchdataOutboundPort soulconnectBatchdataOutboundPort;
 
-    public StatisticSoulConnectProcessor(TacticCharacterOutboundPort tacticCharacterOutboundPort, SoulconnectBatchdataOutboundPort soulconnectBatchdataOutboundPort) {
+    public StatisticSoulConnectDataProcessor(TacticCharacterOutboundPort tacticCharacterOutboundPort, SoulconnectBatchdataOutboundPort soulconnectBatchdataOutboundPort) {
         this.tacticCharacterOutboundPort = tacticCharacterOutboundPort;
         this.soulconnectBatchdataOutboundPort = soulconnectBatchdataOutboundPort;
     }
@@ -35,5 +38,15 @@ public class StatisticSoulConnectProcessor implements StatisticSoulConnectInboun
         SoulconnectBatchdata soulconnectBatchdata = soulconnectBatchdataOutboundPort.getReferenceById(1L);
         soulconnectBatchdata.setLastBatch(currentCount);
         soulconnectBatchdataOutboundPort.save(soulconnectBatchdata);
+    }
+
+    @Override
+    public List<Long> getAddedTacticId() {
+        return soulconnectBatchdataOutboundPort.findAllByIsBatched(0)
+                .stream()
+                .map(SoulconnectBatchdata::isBatchDone)
+                .map(SoulconnectBatchdata::getTacticId)
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
