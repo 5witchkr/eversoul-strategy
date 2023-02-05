@@ -4,10 +4,12 @@ import com.strategy.adapter.outbound.persistence.entity.StoryEpisode;
 import com.strategy.adapter.outbound.persistence.entity.StorySoulcharacter;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface StoryEpisodeRepository extends JpaRepository<StoryEpisode, Long> {
 
-    StoryEpisode getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter);
+    Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter(int orderNumber, StorySoulcharacter storySoulcharacter);
 
 
-    StoryEpisode getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId);
+    Optional<StoryEpisode> getByOrderNumberAndStorySoulcharacter_Id(int orderNumber, Long storySoulcharacterId);
 }
