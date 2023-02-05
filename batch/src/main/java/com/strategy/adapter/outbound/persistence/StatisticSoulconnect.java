@@ -1,5 +1,6 @@
 package com.strategy.adapter.outbound.persistence;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,13 +18,19 @@ public class StatisticSoulconnect {
     private Long id;
 
     @Column
-    private Long lastBatch;
+    private Long connectSoul;
 
-    @Column //ex 24_13 ->
-    private String connectSouls;
+    @Column
+    private Long connectedSoul;
 
     @Column
     private int connectCount;
+
+    @Builder
+    public StatisticSoulconnect(Long connectSoul, Long connectedSoul){
+        this.connectSoul = connectSoul;
+        this.connectedSoul = connectedSoul;
+    }
 
     public void addCount() {
         this.connectCount++;
