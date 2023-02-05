@@ -1,8 +1,8 @@
 package com.strategy.application.processor;
 
 
-import com.strategy.application.batch.SoulConnectJobConfig;
-import com.strategy.application.port.inbound.portbatch.SoulConnectBatchInboundPort;
+import com.strategy.application.batch.SoulConnectDataJobConfig;
+import com.strategy.application.port.inbound.portbatch.SoulConnectDataBatchInboundPort;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
@@ -16,16 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class SoulConnectBatchProcessor implements SoulConnectBatchInboundPort {
+public class SoulConnectDataBatchProcessor implements SoulConnectDataBatchInboundPort {
 
     private final JobLauncher jobLauncher;
     private final JobRepository jobRepository;
-    private final SoulConnectJobConfig soulConnectJobConfig;
+    private final SoulConnectDataJobConfig soulConnectDataJobConfig;
 
-    public SoulConnectBatchProcessor(JobLauncher jobLauncher, JobRepository jobRepository, SoulConnectJobConfig soulConnectJobConfig) {
+    public SoulConnectDataBatchProcessor(JobLauncher jobLauncher, JobRepository jobRepository, SoulConnectDataJobConfig soulConnectDataJobConfig) {
         this.jobLauncher = jobLauncher;
         this.jobRepository = jobRepository;
-        this.soulConnectJobConfig = soulConnectJobConfig;
+        this.soulConnectDataJobConfig = soulConnectDataJobConfig;
     }
 
 
@@ -33,7 +33,7 @@ public class SoulConnectBatchProcessor implements SoulConnectBatchInboundPort {
     public void addData(Long addedCount) {
 
         SimpleJob simpleJob = new SimpleJob();
-        simpleJob.setName("statisticConnectJob");
+        simpleJob.setName("statisticConnectDataJob");
         simpleJob.setJobRepository(jobRepository);
 
         if (addedCount == 0) return;
@@ -47,7 +47,7 @@ public class SoulConnectBatchProcessor implements SoulConnectBatchInboundPort {
         List<Step> stepsToExecute = new ArrayList<>();
 
         try {
-            stepsToExecute.add(soulConnectJobConfig.soulConnectStep());
+            stepsToExecute.add(soulConnectDataJobConfig.soulConnectDataStep());
             simpleJob.setSteps(stepsToExecute);
             jobLauncher.run(simpleJob, jobParameters);
         } catch (Exception e) {
