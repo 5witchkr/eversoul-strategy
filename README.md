@@ -70,7 +70,7 @@ I applied hexagonal architecture and loosened the dependencies
 ---
 
 ## project deploy
-![화면 캡처 2023-02-05 142949](https://user-images.githubusercontent.com/95848796/216806662-acb7f9b2-e292-4dcc-9603-3f805cd04948.png)
+![화면 캡처 2023-02-05 163420](https://user-images.githubusercontent.com/95848796/216807233-b50e4584-284f-4829-81f1-9ad2a6aba685.png)
   - project link
     - https://eversoul.pages.dev
   - backend restdocs
