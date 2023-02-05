@@ -24,8 +24,8 @@ public class GetPositionStatProcessor implements GetPositionStatInboundPort {
     public List<PositionStatResponseDto> getPositionStat() {
         return statisticPositionOutboundPort.findAll()
                 .stream()
+                .sorted(Comparator.comparingInt(StatisticPosition::getPositionCount).reversed())
                 .map(this::statisticPositionToPositionStatResDto)
-                .sorted(Comparator.comparingInt(PositionStatResponseDto::getPositionCount).reversed())
                 .collect(Collectors.toList());
     }
 
