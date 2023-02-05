@@ -74,7 +74,7 @@ I applied hexagonal architecture and loosened the dependencies
   - project link
     - https://eversoul.pages.dev
   - backend restdocs
-    - https://api.eversoul.site/docs
+    - Working
   - back-end
     - framework: spring boot
     - infra: aws ec2
