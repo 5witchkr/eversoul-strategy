@@ -12,6 +12,7 @@ public class StatSelectNumberValidator {
                 && argNumber <= SoulIdEnum.SOUL_ID_END.getValue()) {
             return;
         }
+        //todo refactor IllegalStateException && IllegalArgumentException
         throw new IllegalArgumentException("유효하지 않은 argNumber");
     }
 }
