@@ -77,10 +77,8 @@ public class SoulConnectJobConfig {
     @StepScope
     public ItemProcessor<TacticCharacter, SoulconnectBatchdata> soulConnectTacticCharacterProcessor() {
         return tacticCharacter -> SoulconnectBatchdata.builder()
-                .tacticAndSoul(
-                        tacticCharacter.getTactic().getId()
-                                + "-" +
-                                tacticCharacter.getTacticSoulcharacter().getId())
+                .tacticId(tacticCharacter.getTactic().getId())
+                .soulId(tacticCharacter.getTacticSoulcharacter().getId())
                 .build();
     }
 
