@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("GetSoulSelectStatProcessor Tests")
 public class GetSoulSelectStatProcessorTests {
@@ -27,20 +28,29 @@ public class GetSoulSelectStatProcessorTests {
         getSoulSelectStatProcessor = new GetSoulSelectStatProcessor(statisticSoulSelectOutboundPort);
         final Long inputSoulId = 2L;
         final SoulSelectResponseDto answer = SoulSelectResponseDto.builder().id(2L).selectCount(30).build();
-        return Stream.of(DynamicTest.dynamicTest("성공케이스: ", () -> {
 
-            SoulSelectResponseDto result = getSoulSelectStatProcessor.getOne(inputSoulId);
+        return Stream.of(DynamicTest.dynamicTest("성공케이스: SoulSelectResponseDto를 반환한다", () -> {
 
-            assertThat(result).isInstanceOf(SoulSelectResponseDto.class);
-            assertThat(result).usingRecursiveComparison().isEqualTo(answer);
-        })
+                    SoulSelectResponseDto result = getSoulSelectStatProcessor.getOne(inputSoulId);
+
+                    assertThat(result).isInstanceOf(SoulSelectResponseDto.class);
+                    assertThat(result).usingRecursiveComparison().isEqualTo(answer);
+                }),
+                DynamicTest.dynamicTest("실패케이스: 존재하지 않는 soulId", () -> {
+                    assertThatThrownBy(
+                            () -> getSoulSelectStatProcessor.getOne(1100L))
+                            .isInstanceOf(NullPointerException.class);
+                })
         );
     }
 
     private static class TestStatisticSoulSelectOutboundPort implements StatisticSoulSelectOutboundPort {
         @Override
         public StatisticSoulselect getReferenceById(Long id) {
-            return StatisticSoulselect.builder().id(2L).selectCount(30).build();
+            if (id == 2L){
+                return StatisticSoulselect.builder().id(2L).selectCount(30).build();
+            }
+            return null;
         }
 
         @Override
