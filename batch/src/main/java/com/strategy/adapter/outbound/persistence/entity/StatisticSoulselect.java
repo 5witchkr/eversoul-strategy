@@ -1,5 +1,6 @@
 package com.strategy.adapter.outbound.persistence.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,6 +27,13 @@ public class StatisticSoulselect {
 
     public void addCount() {
         this.selectCount++;
+    }
+
+    @Builder
+    public StatisticSoulselect(Long id, Long lastBatch, int selectCount) {
+        this.id = id;
+        this.lastBatch = lastBatch;
+        this.selectCount = selectCount;
     }
 
 }
