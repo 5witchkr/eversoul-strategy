@@ -1,7 +1,7 @@
 package com.strategy.adapter.outbound.adapter;
 
-import com.strategy.adapter.outbound.persistence.StatisticPosition;
-import com.strategy.adapter.outbound.persistence.StatisticPositionRepository;
+import com.strategy.adapter.outbound.persistence.entity.StatisticPosition;
+import com.strategy.adapter.outbound.persistence.jparepository.StatisticPositionRepository;
 import com.strategy.application.port.outbound.StatisticPositionOutboundPort;
 import org.springframework.stereotype.Component;
 

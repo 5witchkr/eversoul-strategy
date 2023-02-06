@@ -1,6 +1,6 @@
 package com.strategy.application.port.outbound;
 
-import com.strategy.adapter.outbound.persistence.SoulconnectBatchdata;
+import com.strategy.adapter.outbound.persistence.entity.SoulconnectBatchdata;
 
 import java.util.List;
 

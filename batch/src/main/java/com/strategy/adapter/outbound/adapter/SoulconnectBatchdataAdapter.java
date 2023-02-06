@@ -1,7 +1,7 @@
 package com.strategy.adapter.outbound.adapter;
 
-import com.strategy.adapter.outbound.persistence.SoulconnectBatchdata;
-import com.strategy.adapter.outbound.persistence.SoulconnectBatchdataRepository;
+import com.strategy.adapter.outbound.persistence.entity.SoulconnectBatchdata;
+import com.strategy.adapter.outbound.persistence.jparepository.SoulconnectBatchdataRepository;
 import com.strategy.application.port.outbound.SoulconnectBatchdataOutboundPort;
 import org.springframework.stereotype.Component;
 

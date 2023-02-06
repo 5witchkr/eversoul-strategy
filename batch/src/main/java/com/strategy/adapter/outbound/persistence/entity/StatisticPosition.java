@@ -1,6 +1,7 @@
-package com.strategy.adapter.outbound.persistence;
+package com.strategy.adapter.outbound.persistence.entity;
 
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,4 +30,10 @@ public class StatisticPosition {
         this.positionCount++;
     }
 
+    @Builder
+    public StatisticPosition(Long lastBatch, String positionName, int positionCount) {
+        this.lastBatch = lastBatch;
+        this.positionName = positionName;
+        this.positionCount = positionCount;
+    }
 }

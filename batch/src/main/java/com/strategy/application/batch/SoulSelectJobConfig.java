@@ -1,8 +1,8 @@
 package com.strategy.application.batch;
 
 
-import com.strategy.adapter.outbound.persistence.StatisticSoulSelectRepository;
-import com.strategy.adapter.outbound.persistence.StatisticSoulselect;
+import com.strategy.adapter.outbound.persistence.jparepository.StatisticSoulSelectRepository;
+import com.strategy.adapter.outbound.persistence.entity.StatisticSoulselect;
 import com.strategy.adpater.outbound.persistence.entity.TacticCharacter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;

@@ -1,6 +1,6 @@
 package com.strategy.application.port.outbound;
 
-import com.strategy.adapter.outbound.persistence.StatisticPosition;
+import com.strategy.adapter.outbound.persistence.entity.StatisticPosition;
 
 import java.util.List;
 

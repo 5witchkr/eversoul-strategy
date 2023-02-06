@@ -1,4 +1,4 @@
-package com.strategy.application.processor;
+package com.strategy.application.processor.soulconnect;
 
 
 import com.strategy.application.batch.SoulConnectDataJobConfig;

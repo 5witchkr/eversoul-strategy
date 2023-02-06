@@ -1,7 +1,7 @@
-package com.strategy.application.processor;
+package com.strategy.application.processor.soulselect;
 
 
-import com.strategy.adapter.outbound.persistence.StatisticSoulselect;
+import com.strategy.adapter.outbound.persistence.entity.StatisticSoulselect;
 import com.strategy.application.port.inbound.outputdto.SoulSelectResponseDto;
 import com.strategy.application.port.inbound.portstat.GetSoulSelectStatInboundPort;
 import com.strategy.application.port.outbound.StatisticSoulSelectOutboundPort;

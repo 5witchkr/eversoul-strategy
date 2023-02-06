@@ -1,8 +1,8 @@
-package com.strategy.application.processor;
+package com.strategy.application.processor.soulconnect;
 
 
-import com.strategy.adapter.outbound.persistence.SoulconnectBatchdata;
-import com.strategy.adapter.outbound.persistence.StatisticSoulconnect;
+import com.strategy.adapter.outbound.persistence.entity.SoulconnectBatchdata;
+import com.strategy.adapter.outbound.persistence.entity.StatisticSoulconnect;
 import com.strategy.application.batch.SoulConnectJobConfig;
 import com.strategy.application.port.inbound.portbatch.SoulConnectBatchInboundPort;
 import com.strategy.application.port.outbound.SoulconnectBatchdataOutboundPort;
