@@ -1,6 +1,6 @@
 package com.strategy.application.port.outbound;
 
-import com.strategy.adapter.outbound.persistence.StatisticSoulconnect;
+import com.strategy.adapter.outbound.persistence.entity.StatisticSoulconnect;
 
 import java.util.List;
 import java.util.Optional;

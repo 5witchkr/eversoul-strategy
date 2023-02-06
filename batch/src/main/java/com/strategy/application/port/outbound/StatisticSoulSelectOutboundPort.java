@@ -1,6 +1,6 @@
 package com.strategy.application.port.outbound;
 
-import com.strategy.adapter.outbound.persistence.StatisticSoulselect;
+import com.strategy.adapter.outbound.persistence.entity.StatisticSoulselect;
 
 import java.util.List;
 

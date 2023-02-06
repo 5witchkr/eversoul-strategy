@@ -1,4 +1,4 @@
-package com.strategy.adapter.outbound.persistence;
+package com.strategy.adapter.outbound.persistence.entity;
 
 import lombok.Builder;
 import lombok.Getter;

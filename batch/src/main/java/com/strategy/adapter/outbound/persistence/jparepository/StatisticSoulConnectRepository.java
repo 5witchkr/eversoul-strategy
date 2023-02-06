@@ -1,5 +1,6 @@
-package com.strategy.adapter.outbound.persistence;
+package com.strategy.adapter.outbound.persistence.jparepository;
 
+import com.strategy.adapter.outbound.persistence.entity.StatisticSoulconnect;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

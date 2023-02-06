@@ -1,7 +1,7 @@
 package com.strategy.adapter.outbound.adapter;
 
-import com.strategy.adapter.outbound.persistence.StatisticSoulConnectRepository;
-import com.strategy.adapter.outbound.persistence.StatisticSoulconnect;
+import com.strategy.adapter.outbound.persistence.jparepository.StatisticSoulConnectRepository;
+import com.strategy.adapter.outbound.persistence.entity.StatisticSoulconnect;
 import com.strategy.application.port.outbound.StatisticSoulconnectOutboundPort;
 import org.springframework.stereotype.Component;
 

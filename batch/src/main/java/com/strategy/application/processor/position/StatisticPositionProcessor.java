@@ -1,7 +1,7 @@
-package com.strategy.application.processor;
+package com.strategy.application.processor.position;
 
 
-import com.strategy.adapter.outbound.persistence.StatisticPosition;
+import com.strategy.adapter.outbound.persistence.entity.StatisticPosition;
 import com.strategy.application.port.inbound.portbatch.StatisticPositionInboundPort;
 import com.strategy.application.port.outbound.StatisticPositionOutboundPort;
 import com.strategy.application.port.outbound.TacticOutboundPort;
