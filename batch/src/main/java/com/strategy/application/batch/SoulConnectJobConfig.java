@@ -1,8 +1,8 @@
 package com.strategy.application.batch;
 
 
-import com.strategy.adapter.outbound.persistence.SoulconnectBatchdata;
-import com.strategy.adapter.outbound.persistence.StatisticSoulConnectRepository;
+import com.strategy.adapter.outbound.persistence.entity.SoulconnectBatchdata;
+import com.strategy.adapter.outbound.persistence.jparepository.StatisticSoulConnectRepository;
 import com.strategy.adpater.outbound.persistence.entity.TacticCharacter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;

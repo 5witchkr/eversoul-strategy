@@ -1,7 +1,8 @@
-package com.strategy.application.processor;
+package com.strategy.application.processor.position;
 
-import com.strategy.application.batch.SoulSelectJobConfig;
-import com.strategy.application.port.inbound.portbatch.SoulSelectBatchInboundPort;
+
+import com.strategy.application.batch.PositionJobConfig;
+import com.strategy.application.port.inbound.portbatch.PositionBatchInboundPort;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
@@ -14,31 +15,28 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
-public class SoulSelectBatchProcessor implements SoulSelectBatchInboundPort {
+public class PositionBatchProcessor implements PositionBatchInboundPort {
 
     private final JobLauncher jobLauncher;
     private final JobRepository jobRepository;
-    private final SoulSelectJobConfig soulSelectJobConfig;
+    private final PositionJobConfig positionJobConfig;
 
-
-    public SoulSelectBatchProcessor(JobLauncher jobLauncher, JobRepository jobRepository, SoulSelectJobConfig soulSelectJobConfig) {
+    public PositionBatchProcessor(JobLauncher jobLauncher, JobRepository jobRepository, PositionJobConfig positionJobConfig) {
         this.jobLauncher = jobLauncher;
         this.jobRepository = jobRepository;
-        this.soulSelectJobConfig = soulSelectJobConfig;
+        this.positionJobConfig = positionJobConfig;
     }
 
     @Override
     public void addData(Long addedCount) {
-
         SimpleJob simpleJob = new SimpleJob();
-        simpleJob.setName("statisticSoulJob");
+        simpleJob.setName("statisticPositionJob");
         simpleJob.setJobRepository(jobRepository);
 
         if (addedCount == 0) return;
 
-        String addedCountJobAndDate = addedCount + "," + "SoulSelect" + LocalDate.now();
+        String addedCountJobAndDate = addedCount + "," + "Position" + LocalDate.now();
 
         JobParameters jobParameters = new JobParametersBuilder()
                 .addString("addedCountJobAndDate",addedCountJobAndDate)
@@ -47,7 +45,7 @@ public class SoulSelectBatchProcessor implements SoulSelectBatchInboundPort {
         List<Step> stepsToExecute = new ArrayList<>();
 
         try {
-            stepsToExecute.add(soulSelectJobConfig.soulSelectStep());
+            stepsToExecute.add(positionJobConfig.positionStep());
             simpleJob.setSteps(stepsToExecute);
             jobLauncher.run(simpleJob, jobParameters);
         } catch (Exception e) {
